@@ -25,44 +25,20 @@ function ficherYatesShuffle(deck) {
 
 function getDisplayedCards(cards, totalDisplayedCards) {
   const notClickedCards = cards.filter(card => !card.isClicked);
-  const otherCards = cards.filter(card => card.isClicked);
-  const shuffledOtherCards = ficherYatesShuffle(otherCards);
 
-  // If there are no notClickedCards, return the first 'totalDisplayedCards' cards
-  if (notClickedCards.length === 0) {
-    return shuffledOtherCards.slice(0, totalDisplayedCards);
-  }
+  if (notClickedCards.length === 0) return ficherYatesShuffle(cards).slice(0, totalDisplayedCards);
 
   const randomNotClickedCardIndex = Math.floor(Math.random() * notClickedCards.length);
   const randomNotClickedCard = notClickedCards[randomNotClickedCardIndex];
   
-  // Generate a random index to insert the not clicked card
+  const otherCards = cards.filter(card => card.id !== randomNotClickedCard.id);
+  const shuffledOtherCards = ficherYatesShuffle(otherCards);
+
   const displayCards = shuffledOtherCards.slice(0, totalDisplayedCards - 1);
   const randomIndex = Math.floor(Math.random() * displayCards.length);
   displayCards.splice(randomIndex, 0, randomNotClickedCard);
 
   return displayCards;
 }
-
-// function getDisplayedCards(cards, totalDisplayedCards) {
-//   const notClickedCards = cards.filter(card => !card.isClicked);
-//   const randomNotClickedCardIndex = Math.floor(Math.random() * notClickedCards.length);
-//   const randomNotClickedCard = notClickedCards[randomNotClickedCardIndex];
-//   
-//   const otherCards = cards.filter(card => card.id !== randomNotClickedCard.id);
-//   const shuffledOtherCards = ficherYatesShuffle(otherCards);
-//
-//   // If there are no notClickedCards, return the first 'totalDisplayedCards' cards
-//   if (notClickedCards.length === 0) {
-//     return shuffledOtherCards.slice(0, totalDisplayedCards);
-//   }
-//
-//   // Generate a random index to insert the not clicked card
-//   const displayCards = shuffledOtherCards.slice(0, totalDisplayedCards - 1);
-//   const randomIndex = Math.floor(Math.random() * displayCards.length);
-//   displayCards.splice(randomIndex, 0, randomNotClickedCard);
-//
-//   return displayCards;
-// }
 
 export { trimFullDeck, ficherYatesShuffle as shuffleDeck, getDisplayedCards };

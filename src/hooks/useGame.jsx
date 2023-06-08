@@ -63,10 +63,6 @@ function useGame() {
   }, [score, maxScore]);
 
   useEffect(() => {
-    console.log("levels", levels);
-  }, [levels]);
-
-  useEffect(() => {
     setLevels((prevLevels) =>
       prevLevels.map((level) =>
         level.id === currentLevelId
@@ -135,7 +131,7 @@ function useGame() {
   }
 
   return {
-    playingDeck,
+    displayedCards,
     setPlayingDeck,
     currentDeck,
     levels,

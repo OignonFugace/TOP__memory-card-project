@@ -4,8 +4,6 @@ import GameContext from "../../context/GameContextProvider"
 function LevelSelector({ startGameAtLevel }) {
 	const context = useContext(GameContext);
 
-	console.log('render level selector');
-
 	return (
 		<div 
 			style={{
