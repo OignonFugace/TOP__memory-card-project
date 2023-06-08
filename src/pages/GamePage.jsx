@@ -2,7 +2,7 @@ import { useContext } from "react";
 import CardList from "../components/CardList";
 import GameContext from "../context/GameContextProvider";
 
-function GameBoard({ handleBackToFrontPage }) {
+function GamePage({ handleBackToFrontPage }) {
   const context = useContext(GameContext);
 
   function handleHeaderClick() {
@@ -21,7 +21,7 @@ function GameBoard({ handleBackToFrontPage }) {
         </h2>
       </header>
       <h1>Game Board Page</h1>
-      <h2>Level {context.currentLevel.name}</h2>
+      <h2>Level {context.currentLevelId}</h2>
       <p>Don't click on the same card twice!</p>
       <CardList />
       <p>
@@ -31,4 +31,4 @@ function GameBoard({ handleBackToFrontPage }) {
   );
 }
 
-export default GameBoard;
+export default GamePage;

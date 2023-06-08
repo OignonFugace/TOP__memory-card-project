@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"; import { fullDeck as fullDeckData } from "../data/cardList";
+import { useEffect, useState } from "react";
+import { fullDeck as fullDeckData } from "../data/cardList";
 import { trimFullDeck, shuffleDeck, getDisplayedCards } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
 
@@ -7,7 +8,9 @@ function useGame() {
   const [playingDeck, setPlayingDeck] = useState(null);
   const [displayedCards, setDisplayedCards] = useState(null);
   const [levels, setLevels] = useState(levelsData || null);
-  const [currentLevel, setCurrentLevel] = useState(levelsData[0] || null);
+  const [currentLevelId, setCurrentLevelId] = useState(
+    levelsData[0].id || null
+  );
   const [levelPassed, setLevelPassed] = useState(false);
   const [gameState, setGameState] = useState("running");
   const [score, setScore] = useState(0);
@@ -15,46 +18,78 @@ function useGame() {
 
   useEffect(() => {
     setCurrentDeck(fullDeckData);
+    setLevels((prevLevels) =>
+      prevLevels.map((level) => ({
+        ...level,
+        state: "closed",
+      }))
+    );
   }, []);
 
   useEffect(() => {
-    if (currentDeck && currentLevel) {
+    if (currentDeck && currentLevelId) {
       const shuffledDeck = shuffleDeck(currentDeck);
-      const currentLevelId = currentLevel.id;
-      setPlayingDeck(() => 
+      setPlayingDeck(() =>
         trimFullDeck(shuffledDeck, currentLevelId).map((card) => ({
           ...card,
           isClicked: false,
         }))
       );
     }
-  }, [currentDeck, currentLevel]);
+  }, [currentDeck, currentLevelId]);
 
   useEffect(() => {
     if (playingDeck) {
       setMaxScore(playingDeck?.length);
-      setDisplayedCards(getDisplayedCards(playingDeck, currentLevel.totalDisplayedCards));
+      setDisplayedCards(
+        getDisplayedCards(
+          playingDeck,
+          levels[currentLevelId - 1].totalDisplayedCards
+        )
+      );
     }
   }, [playingDeck]);
 
   useEffect(() => {
     if (score === maxScore) {
       setGameState("won");
+      setLevels((prevLevels) =>
+        prevLevels.map((level) =>
+          level.id === currentLevelId ? { ...level, state: "passed" } : level
+        )
+      );
       setLevelPassed(true);
     }
   }, [score, maxScore]);
 
+  useEffect(() => {
+    console.log("levels", levels);
+  }, [levels]);
+
+  useEffect(() => {
+    setLevels((prevLevels) =>
+      prevLevels.map((level) =>
+        level.id === currentLevelId
+          ? {
+              ...level,
+              state: "inProgress",
+            }
+          : level
+      )
+    );
+  }, [currentLevelId]);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (levelPassed) {
-      if (currentLevel.id < levels.length) {
-        setCurrentLevel(prevCurrentLevel => levels[prevCurrentLevel.id]);
+      if (currentLevelId < levels.length) {
+        setCurrentLevelId((prevCurrentLevelId) => prevCurrentLevelId + 1);
       } else {
         alert("Well, you are best : you finished the game !");
       }
       setLevelPassed(false);
     }
-  }, [levelPassed])
+  }, [levelPassed]);
 
   useEffect(() => {
     if (gameState === "lost") {
@@ -69,11 +104,15 @@ function useGame() {
   function updateSelectedCard(card) {
     if (card.isClicked) return false;
 
-    setPlayingDeck(prevPlayingDeck =>
-      shuffleDeck(prevPlayingDeck.map(cardObject =>
-        cardObject.id === card.id ? { ...cardObject, isClicked: true } : cardObject
+    setPlayingDeck((prevPlayingDeck) =>
+      shuffleDeck(
+        prevPlayingDeck.map((cardObject) =>
+          cardObject.id === card.id
+            ? { ...cardObject, isClicked: true }
+            : cardObject
+        )
       )
-    ));
+    );
 
     return true;
   }
@@ -86,7 +125,7 @@ function useGame() {
       return;
     }
 
-    setScore(prevScore => prevScore + 1);
+    setScore((prevScore) => prevScore + 1);
   }
 
   function resetGame() {
@@ -95,13 +134,13 @@ function useGame() {
     setScore(0);
   }
 
-  return { 
-    playingDeck, 
-    setPlayingDeck, 
-    currentDeck, 
+  return {
+    playingDeck,
+    setPlayingDeck,
+    currentDeck,
     levels,
-    currentLevel, 
-    setCurrentLevel ,
+    currentLevelId,
+    setCurrentLevelId,
     score,
     setScore,
     maxScore,

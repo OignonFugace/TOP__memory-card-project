@@ -4,6 +4,8 @@ import GameContext from "../../context/GameContextProvider"
 function LevelSelector({ startGameAtLevel }) {
 	const context = useContext(GameContext);
 
+	console.log('render level selector');
+
 	return (
 		<div 
 			style={{
@@ -17,11 +19,11 @@ function LevelSelector({ startGameAtLevel }) {
 				<button
 					key={level.id}
 					onClick={() => {
-						if (level.id <= context.currentLevel.id) {
-							startGameAtLevel(level);
+						if (level.id <= context.currentLevelId) {
+							startGameAtLevel(level.id);
 						}
 					}}
-					disabled={level.id > context.currentLevel.id}
+					disabled={level.state === "closed"}
 				>
 					{level.name} - {level.difficulty}
 				</button>

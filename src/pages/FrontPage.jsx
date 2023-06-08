@@ -6,7 +6,7 @@ function FrontPage({ initiateGame }) {
   const context = useContext(GameContext);
 
   const startGameAtLevel = (level) => {
-    context.setCurrentLevel(level);
+    context.setCurrentLevelId(level);
     initiateGame();
   };
 
