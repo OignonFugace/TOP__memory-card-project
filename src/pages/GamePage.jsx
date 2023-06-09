@@ -3,9 +3,8 @@ import CardList from "../components/CardList";
 import GameContext from "../context/GameContextProvider";
 import Modal from "../components/Modal";
 
-function GamePage({ handleBackToFrontPage }) {
-  const { resetGame, levels, currentLevelId, score, maxScore, bestScore, openModal } =
-    useContext(GameContext);
+function GamePage() {
+  const { resetGame, levels, currentLevelId, score, maxScore, bestScore, handleBackToFrontPage } = useContext(GameContext);
 
   function handleHeaderClick() {
     handleBackToFrontPage();

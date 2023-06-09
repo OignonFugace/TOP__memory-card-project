@@ -3,8 +3,8 @@ import useGame from "../hooks/useGame";
 
 const GameContext = createContext();
 
-export function GameContextProvider({ children }) {
-  const context = useGame();
+export function GameContextProvider({ children, handleBackToFrontPage }) {
+  const context = useGame({handleBackToFrontPage});
   return (
     <GameContext.Provider value={ context }>
       {children}

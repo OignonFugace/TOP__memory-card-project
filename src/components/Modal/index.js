@@ -3,21 +3,33 @@ import GameContext from "../../context/GameContextProvider";
 import "./modal.css";
 
 function Modal() {
-  const { resetGame, gameState, isModalOpen, closeModal } = useContext(GameContext);
+  const { resetGame, gameState, isModalOpen, closeModal } =
+    useContext(GameContext);
 
   if (!isModalOpen) return null;
 
   const bodyMessage =
-    gameState === "won" ? "You won!" : gameState === "lost" ? "You lost..." : "";
-  
-  const buttonMessage = 
-    gameState === "won" ? "Continue on next level" : gameState === "lost" ? "Try again" : "";
+    gameState === "won"
+      ? "You won!"
+      : gameState === "lost"
+      ? "You lost..."
+      : gameState === "finished"
+      ? "Well, you are best : you finished the game !"
+      : "";
+
+  const buttonMessage =
+    gameState === "won"
+      ? "Continue on next level"
+      : gameState === "lost"
+      ? "Try again"
+      : gameState === "finished"
+      ? "Back To Menu"
+      : "";
 
   function handleCloseModal() {
     closeModal();
     resetGame();
   }
-
 
   return (
     <div className="modal-overlay">

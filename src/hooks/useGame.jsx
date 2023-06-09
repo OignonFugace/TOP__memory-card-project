@@ -3,7 +3,7 @@ import { fullDeck as fullDeckData } from "../data/cardList";
 import { trimFullDeck, shuffleDeck, getDisplayedCards } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
 
-function useGame() {
+function useGame({ handleBackToFrontPage }) {
   const [currentDeck, setCurrentDeck] = useState(null);
   const [playingDeck, setPlayingDeck] = useState(null);
   const [displayedCards, setDisplayedCards] = useState(null);
@@ -93,7 +93,7 @@ function useGame() {
       if (currentLevelId < levels.length) {
         setCurrentLevelId((prevCurrentLevelId) => prevCurrentLevelId + 1);
       } else {
-        alert("Well, you are best : you finished the game !");
+        setGameState("finished");
       }
       setLevelPassed(false);
     }
@@ -111,6 +111,10 @@ function useGame() {
         );
         setLevelPassed(true);
       });
+    } else if (gameState === "finished") {
+      openModal(() => {
+        handleBackToFrontPage();
+      })
     }
   }, [gameState]);
 
@@ -162,7 +166,8 @@ function useGame() {
     gameState,
     resetGame,
     isModalOpen,
-    closeModal
+    closeModal,
+    handleBackToFrontPage,
   };
 }
 

@@ -28,11 +28,11 @@ function App() {
       {isAppLoading ? (
         <Loading />
       ) : (
-        <GameContextProvider>
+        <GameContextProvider handleBackToFrontPage={() => setIsGameStarted(false)}>
           {!isGameStarted ? (
             <FrontPage initiateGame={() => setIsGameStarted(true)} />
           ) : (
-            <GamePage handleBackToFrontPage={() => setIsGameStarted(false)} />
+            <GamePage />
           )}
         </GameContextProvider>
       )}
