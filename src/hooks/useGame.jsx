@@ -99,22 +99,28 @@ function useGame({ handleBackToFrontPage }) {
     }
   }, [levelPassed]);
 
+  function markCurrentLevelAsPassed() {
+    setLevels((prevLevels) =>
+      prevLevels.map((level) =>
+        level.id === currentLevelId ? { ...level, state: "passed" } : level
+      )
+    );
+    setLevelPassed(true);
+  }
+
   useEffect(() => {
-    if (gameState === "lost") {
-      openModal()
-    } else if (gameState === "won") {
-      openModal(() => {
-        setLevels((prevLevels) =>
-          prevLevels.map((level) =>
-            level.id === currentLevelId ? { ...level, state: "passed" } : level
-          )
-        );
-        setLevelPassed(true);
-      });
-    } else if (gameState === "finished") {
+    if (gameState === "finished") {
       openModal(() => {
         handleBackToFrontPage();
       })
+    } else if (gameState === "lost") {
+      openModal()
+    } else if (gameState === "won") {
+      if (currentLevelId >= levels.length) {
+        markCurrentLevelAsPassed();
+        return;
+      };
+      openModal(markCurrentLevelAsPassed);
     }
   }, [gameState]);
 
