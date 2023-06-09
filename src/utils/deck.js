@@ -1,14 +1,5 @@
 function trimFullDeck(fullDeck, level) {
-  switch (level) {
-    case 1:
-      return fullDeck.slice(0, 5);
-    case 2:
-      return fullDeck.slice(0, 10);
-    case 3:
-      return fullDeck.slice(0, 20);
-    default:
-      throw new Error(`Invalid level: ${level}`);
-  }
+  return fullDeck.slice(0, level.totalPlayingCards);
 }
 
 function ficherYatesShuffle(deck) {

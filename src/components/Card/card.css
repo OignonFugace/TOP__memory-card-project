@@ -1,0 +1,7 @@
+.card {
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  padding: 0 1ch;
+  cursor: pointer;
+}
+

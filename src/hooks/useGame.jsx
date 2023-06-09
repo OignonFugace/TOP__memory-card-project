@@ -15,6 +15,7 @@ function useGame() {
   const [gameState, setGameState] = useState("running");
   const [score, setScore] = useState(0);
   const [maxScore, setMaxScore] = useState(null);
+  const [bestScore, setBestScore] = useState(null);
 
   useEffect(() => {
     setCurrentDeck(fullDeckData);
@@ -30,7 +31,7 @@ function useGame() {
     if (currentDeck && currentLevelId) {
       const shuffledDeck = shuffleDeck(currentDeck);
       setPlayingDeck(() =>
-        trimFullDeck(shuffledDeck, currentLevelId).map((card) => ({
+        trimFullDeck(shuffledDeck, levels[currentLevelId - 1]).map((card) => ({
           ...card,
           isClicked: false,
         }))
@@ -60,6 +61,8 @@ function useGame() {
       );
       setLevelPassed(true);
     }
+
+    setBestScore((prevBestScore) => prevBestScore > score ? prevBestScore : score);
   }, [score, maxScore]);
 
   useEffect(() => {
@@ -140,6 +143,7 @@ function useGame() {
     score,
     setScore,
     maxScore,
+    bestScore,
     handleCardClick,
     gameState,
     resetGame,

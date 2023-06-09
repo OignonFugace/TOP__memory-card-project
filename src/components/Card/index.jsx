@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
+import "./card.css";
 
 function Card({ card }) {
   const { 
@@ -8,12 +9,7 @@ function Card({ card }) {
 
   return (
     <div
-      style={{
-        border: "2px solid currentColor",
-        borderRadius: "3px",
-        padding: "0 1ch",
-        cursor: "pointer",
-      }}
+      className="card"
       onClick={() => handleCardClick(card)}
     >
       <p>{card.jobName}</p>
