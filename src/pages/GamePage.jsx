@@ -1,18 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CardList from "../components/CardList";
 import GameContext from "../context/GameContextProvider";
 import Modal from "../components/Modal";
 
 function GamePage({ handleBackToFrontPage }) {
-  const context = useContext(GameContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const { resetGame, levels, currentLevelId, score, maxScore, bestScore, openModal } =
+    useContext(GameContext);
 
   function handleHeaderClick() {
     handleBackToFrontPage();
-    context.resetGame();
+    resetGame();
   }
 
   return (
@@ -23,19 +20,16 @@ function GamePage({ handleBackToFrontPage }) {
       <h1>Memory Card Game</h1>
       <p>Don't click on the same card twice!</p>
       <h2>
-        {context.levels[context.currentLevelId - 1].name} -{" "}
-        {context.levels[context.currentLevelId - 1].difficulty}
+        {levels[currentLevelId - 1].name} -{" "}
+        {levels[currentLevelId - 1].difficulty}
       </h2>
       <CardList />
       <p>
-        {context.score} / {context.maxScore}
+        {score} / {maxScore}
       </p>
-      <p>{context.bestScore ? `Your record is ${context.bestScore}.` : ""}</p>
+      <p>{bestScore ? `Your record is ${bestScore}.` : ""}</p>
 
-      <div>
-        <button onClick={openModal}>Open Modal</button>
-        <Modal isOpen={isModalOpen} close={closeModal} />
-      </div>
+      <Modal />
     </div>
   );
 }

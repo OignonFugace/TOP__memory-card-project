@@ -11,9 +11,14 @@
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1ch;
   background-color: white;
   padding: 1rem;
+  padding-bottom: 2rem;
   border-radius: 3px;
   width: 80%;
-  max-width: 500px;
+  max-width: 300px;
 }

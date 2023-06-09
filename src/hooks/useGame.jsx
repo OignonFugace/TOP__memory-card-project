@@ -16,6 +16,21 @@ function useGame() {
   const [score, setScore] = useState(0);
   const [maxScore, setMaxScore] = useState(null);
   const [bestScore, setBestScore] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCallback, setModalCallback] = useState(null);
+
+  const openModal = (callback) => {
+    setIsModalOpen(true);
+    setModalCallback(() => callback);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    if (modalCallback) {
+      modalCallback();
+      setModalCallback(null);
+    }
+  };
 
   useEffect(() => {
     setCurrentDeck(fullDeckData);
@@ -54,12 +69,6 @@ function useGame() {
   useEffect(() => {
     if (score === maxScore) {
       setGameState("won");
-      setLevels((prevLevels) =>
-        prevLevels.map((level) =>
-          level.id === currentLevelId ? { ...level, state: "passed" } : level
-        )
-      );
-      setLevelPassed(true);
     }
 
     setBestScore((prevBestScore) => prevBestScore > score ? prevBestScore : score);
@@ -92,11 +101,16 @@ function useGame() {
 
   useEffect(() => {
     if (gameState === "lost") {
-      alert("Game Over...");
-      resetGame();
+      openModal()
     } else if (gameState === "won") {
-      alert("You Won! Great For You.");
-      resetGame();
+      openModal(() => {
+        setLevels((prevLevels) =>
+          prevLevels.map((level) =>
+            level.id === currentLevelId ? { ...level, state: "passed" } : level
+          )
+        );
+        setLevelPassed(true);
+      });
     }
   }, [gameState]);
 
@@ -147,6 +161,8 @@ function useGame() {
     handleCardClick,
     gameState,
     resetGame,
+    isModalOpen,
+    closeModal
   };
 }
 
