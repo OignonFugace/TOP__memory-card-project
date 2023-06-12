@@ -1,19 +1,13 @@
 import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
+import "./levelSelector.css";
 
 function LevelSelector({ startGameAtLevel }) {
-  const context = useContext(GameContext);
+  const { levels } = useContext(GameContext);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "start",
-        gap: "5px",
-      }}
-    >
-      {context.levels.map((level) => (
+    <div className="level-selector">
+      {levels.map((level) => (
         <button
           key={level.id}
           onClick={() => {

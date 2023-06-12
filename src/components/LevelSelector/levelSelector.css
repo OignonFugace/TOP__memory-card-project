@@ -1,0 +1,6 @@
+.level-selector {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 5px;
+}

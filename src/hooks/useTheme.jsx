@@ -7,7 +7,6 @@ import { famousMonumentsDeck } from "../data/famousMonumentsDeck.js";
 import { floraDeck } from "../data/floraDeck.js";
 import { fruitsAndVegetablesDeck } from "../data/fruitsAndVegetablesDeck.js";
 import { geometricShapesDeck } from "../data/geometricShapesDeck.js";
-import { levels } from "../data/levels.js";
 import { musicalInstrumentsDeck } from "../data/musicalInstrumentsDeck.js";
 import { professionsDeck } from "../data/professionsDeck.js";
 import { spaceDeck } from "../data/spaceDeck.js";
@@ -16,36 +15,51 @@ import { toolsAndMachinesDeck } from "../data/toolsAndMachinesDeck.js";
 import { vehiclesDeck } from "../data/vehiclesDeck.js";
 import { worldFlagsDeck } from "../data/worldFlagsDeck.js";
 
-const themes = {
-  animals: { deck: animalsDeck, currentLevel: 1 },
-  artsAndLeisure: { deck: artsAndLeisureDeck, currentLevel: 1 },
-  dinosaurs: { deck: dinosaursDeck, currentLevel: 1 },
-  famousMonuments: { deck: famousMonumentsDeck, currentLevel: 1 },
-  flora: { deck: floraDeck, currentLevel: 1 },
-  fruitsAndVegetables: { deck: fruitsAndVegetablesDeck, currentLevel: 1 },
-  geometricShapes: { deck: geometricShapesDeck, currentLevel: 1 },
-  musicalInstruments: { deck: musicalInstrumentsDeck, currentLevel: 1 },
-  professions: { deck: professionsDeck, currentLevel: 1 },
-  space: { deck: spaceDeck, currentLevel: 1 },
-  sports: { deck: sportsDeck, currentLevel: 1 },
-  toolsAndMachines: { deck: toolsAndMachinesDeck, currentLevel: 1 },
-  vehicles: { deck: vehiclesDeck, currentLevel: 1 },
-  worldFlags: { deck: worldFlagsDeck, currentLevel: 1 },
+const themesData = {
+  animals: { deck: animalsDeck, highestLevelAchieved: 1 },
+  artsAndLeisure: { deck: artsAndLeisureDeck, highestLevelAchieved: 1 },
+  dinosaurs: { deck: dinosaursDeck, highestLevelAchieved: 1 },
+  famousMonuments: { deck: famousMonumentsDeck, highestLevelAchieved: 1 },
+  flora: { deck: floraDeck, highestLevelAchieved: 1 },
+  fruitsAndVegetables: { deck: fruitsAndVegetablesDeck, highestLevelAchieved: 1 },
+  geometricShapes: { deck: geometricShapesDeck, highestLevelAchieved: 1 },
+  musicalInstruments: { deck: musicalInstrumentsDeck, highestLevelAchieved: 1 },
+  professions: { deck: professionsDeck, highestLevelAchieved: 1 },
+  space: { deck: spaceDeck, highestLevelAchieved: 1 },
+  sports: { deck: sportsDeck, highestLevelAchieved: 1 },
+  toolsAndMachines: { deck: toolsAndMachinesDeck, highestLevelAchieved: 1 },
+  vehicles: { deck: vehiclesDeck, highestLevelAchieved: 1 },
+  worldFlags: { deck: worldFlagsDeck, highestLevelAchieved: 1 },
 };
 
 function useTheme() {
+  const [themes, setThemes] = useState(themesData);
   const [currentTheme, setCurrentTheme] = useState("professions");
-  const [currentDeck, setCurrentDeck] = useState(themes[currentTheme].deck);
+  const [currentDeck, setCurrentDeck] = useState(null);
+  const [highestLevelAchieved, setHighestLevelAchieved] = useState(null);
 
   useEffect(() => {
     setCurrentDeck(themes[currentTheme].deck);
+    setHighestLevelAchieved(themes[currentTheme].highestLevelAchieved);
   }, [currentTheme]);
+
+  useEffect(() => {
+    setThemes(prevThemes => ({
+      ...prevThemes,
+      [currentTheme]: {
+        ...prevThemes[currentTheme],
+        highestLevelAchieved: highestLevelAchieved,
+      }
+    }))
+  }, [highestLevelAchieved])
 
   return {
     currentTheme,
     setCurrentTheme,
     currentDeck,
     setCurrentDeck,
+    highestLevelAchieved,
+    setHighestLevelAchieved,
   };
 }
 

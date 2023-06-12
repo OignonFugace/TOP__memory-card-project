@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-// import { professionsDeck as fullDeckData } from "../data/professionsDeck.js";
 import { trimFullDeck, shuffleDeck, getDisplayedCards } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
 import ThemeContext from "../context/ThemeContextProvider.jsx";
 
 function useGame({ handleBackToFrontPage }) {
-  const { currentDeck, setCurrentDeck } = useContext(ThemeContext);
+  const {
+    currentDeck,
+    setCurrentDeck,
+    highestLevelAchieved,
+    setHighestLevelAchieved,
+  } = useContext(ThemeContext);
 
-  // const [currentDeck, setCurrentDeck] = useState(null);
   const [playingDeck, setPlayingDeck] = useState(null);
   const [displayedCards, setDisplayedCards] = useState(null);
   const [levels, setLevels] = useState(levelsData || null);
@@ -22,17 +25,13 @@ function useGame({ handleBackToFrontPage }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalCallback, setModalCallback] = useState(null);
 
-  useEffect(() => {
-    console.log(displayedCards);
-  }, [displayedCards])
-
   const openModal = (callback) => {
     setIsModalOpen(true);
     setModalCallback(() => callback);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false)
+    setIsModalOpen(false);
     if (modalCallback) {
       modalCallback();
       setModalCallback(null);
@@ -40,7 +39,6 @@ function useGame({ handleBackToFrontPage }) {
   };
 
   useEffect(() => {
-    // setCurrentDeck(fullDeckData);
     setLevels((prevLevels) =>
       prevLevels.map((level) => ({
         ...level,
@@ -62,6 +60,27 @@ function useGame({ handleBackToFrontPage }) {
   }, [currentDeck, currentLevelId]);
 
   useEffect(() => {
+    setLevels((prevLevels) =>
+      prevLevels.map((level) =>
+        level.id < highestLevelAchieved
+          ? {
+              ...level,
+              state: "open",
+            }
+          : level.id > highestLevelAchieved
+          ? {
+              ...level,
+              state: "closed",
+            }
+          : {
+              ...level,
+              state: "inProgress",
+            }
+      )
+    );
+  }, [highestLevelAchieved]);
+
+  useEffect(() => {
     if (playingDeck) {
       setMaxScore(playingDeck?.length);
       setDisplayedCards(
@@ -78,7 +97,9 @@ function useGame({ handleBackToFrontPage }) {
       setGameState("won");
     }
 
-    setBestScore((prevBestScore) => prevBestScore > score ? prevBestScore : score);
+    setBestScore((prevBestScore) =>
+      prevBestScore > score ? prevBestScore : score
+    );
   }, [score, maxScore]);
 
   useEffect(() => {
@@ -98,6 +119,11 @@ function useGame({ handleBackToFrontPage }) {
     if (levelPassed) {
       if (currentLevelId < levels.length) {
         setCurrentLevelId((prevCurrentLevelId) => prevCurrentLevelId + 1);
+        setHighestLevelAchieved((prevHighestLevelAchieved) =>
+          prevHighestLevelAchieved === currentLevelId
+            ? prevHighestLevelAchieved + 1
+            : prevHighestLevelAchieved
+        );
       } else {
         setGameState("finished");
       }
@@ -118,14 +144,14 @@ function useGame({ handleBackToFrontPage }) {
     if (gameState === "finished") {
       openModal(() => {
         handleBackToFrontPage();
-      })
+      });
     } else if (gameState === "lost") {
-      openModal()
+      openModal();
     } else if (gameState === "won") {
       if (currentLevelId >= levels.length) {
         markCurrentLevelAsPassed();
         return;
-      };
+      }
       openModal(markCurrentLevelAsPassed);
     }
   }, [gameState]);
