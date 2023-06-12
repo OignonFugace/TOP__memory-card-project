@@ -12,7 +12,7 @@ function Card({ card }) {
       className="card"
       onClick={() => handleCardClick(card)}
     >
-      <p>{card.jobName}</p>
+      <p>{card.itemName}</p>
     </div>
   );
 }

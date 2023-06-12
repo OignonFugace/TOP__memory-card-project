@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import LevelSelector from "../components/LevelSelector";
+import ThemeSelector from "../components/ThemeSelector";
 import GameContext from "../context/GameContextProvider";
 
 function FrontPage({ initiateGame }) {
@@ -12,7 +13,8 @@ function FrontPage({ initiateGame }) {
 
   return (
     <div>
-      <h1>Front Page</h1>
+      <h1>Memory Card Game</h1>
+      <ThemeSelector />
       <LevelSelector startGameAtLevel={startGameAtLevel} />
     </div>
   );

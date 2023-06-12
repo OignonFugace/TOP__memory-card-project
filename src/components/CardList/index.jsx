@@ -1,18 +1,13 @@
 import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
 import Card from "../Card";
+import "./cardList.css";
 
 function CardList() {
   const { displayedCards } = useContext(GameContext);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "1ch",
-      }}
-    >
+    <div className="card-list">
       {displayedCards.map((card) => (
         <Card key={card.id} card={card} />
       ))}

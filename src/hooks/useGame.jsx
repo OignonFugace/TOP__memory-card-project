@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import { fullDeck as fullDeckData } from "../data/cardList";
+import { useContext, useEffect, useState } from "react";
+// import { professionsDeck as fullDeckData } from "../data/professionsDeck.js";
 import { trimFullDeck, shuffleDeck, getDisplayedCards } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
+import ThemeContext from "../context/ThemeContextProvider.jsx";
 
 function useGame({ handleBackToFrontPage }) {
-  const [currentDeck, setCurrentDeck] = useState(null);
+  const { currentDeck, setCurrentDeck } = useContext(ThemeContext);
+
+  // const [currentDeck, setCurrentDeck] = useState(null);
   const [playingDeck, setPlayingDeck] = useState(null);
   const [displayedCards, setDisplayedCards] = useState(null);
   const [levels, setLevels] = useState(levelsData || null);
@@ -18,6 +21,10 @@ function useGame({ handleBackToFrontPage }) {
   const [bestScore, setBestScore] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalCallback, setModalCallback] = useState(null);
+
+  useEffect(() => {
+    console.log(displayedCards);
+  }, [displayedCards])
 
   const openModal = (callback) => {
     setIsModalOpen(true);
@@ -33,7 +40,7 @@ function useGame({ handleBackToFrontPage }) {
   };
 
   useEffect(() => {
-    setCurrentDeck(fullDeckData);
+    // setCurrentDeck(fullDeckData);
     setLevels((prevLevels) =>
       prevLevels.map((level) => ({
         ...level,
@@ -87,7 +94,6 @@ function useGame({ handleBackToFrontPage }) {
     );
   }, [currentLevelId]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (levelPassed) {
       if (currentLevelId < levels.length) {
@@ -152,7 +158,7 @@ function useGame({ handleBackToFrontPage }) {
   }
 
   function resetGame() {
-    setCurrentDeck([...fullDeckData]);
+    setCurrentDeck([...currentDeck]);
     setGameState("running");
     setScore(0);
   }
