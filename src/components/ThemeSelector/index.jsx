@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import GameContext from "../../context/GameContextProvider";
 import ThemeContext from "../../context/ThemeContextProvider";
 import "./ThemeSelector.css";
 

@@ -2,15 +2,17 @@ import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
 import "./card.css";
 
+const SELECT_CARD = "SELECT_CARD";
+
 function Card({ card }) {
   const { 
-    handleCardClick,
+    dispatch,
   } = useContext(GameContext);
 
   return (
     <div
       className="card"
-      onClick={() => handleCardClick(card)}
+      onClick={() => dispatch({ type: SELECT_CARD, payload: card })}
     >
       <p>{card.itemName}</p>
     </div>

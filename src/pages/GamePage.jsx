@@ -2,13 +2,25 @@ import { useContext } from "react";
 import CardList from "../components/CardList";
 import GameContext from "../context/GameContextProvider";
 import Modal from "../components/Modal";
+import ThemeContext from "../context/ThemeContextProvider";
+
+const RESET_STAGE = "RESET_STAGE";
 
 function GamePage() {
-  const { resetGame, levels, currentLevelId, score, maxScore, bestScore, handleBackToFrontPage } = useContext(GameContext);
+  const {
+    dispatch,
+    levels,
+    currentLevelId,
+    score,
+    maxScore,
+    bestScore,
+    handleBackToFrontPage,
+  } = useContext(GameContext);
+  const { currentDeck } = useContext(ThemeContext);
 
   function handleHeaderClick() {
     handleBackToFrontPage();
-    resetGame();
+    dispatch({ type: RESET_STAGE, payload: [...currentDeck] });
   }
 
   return (
