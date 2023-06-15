@@ -36,7 +36,7 @@ function useTheme() {
   const [themes, setThemes] = useState(themesData);
   const [currentTheme, setCurrentTheme] = useState("professions");
   const [currentDeck, setCurrentDeck] = useState(null);
-  const [highestLevelAchieved, setHighestLevelAchieved] = useState(null);
+  const [highestLevelAchieved, setHighestLevelAchieved] = useState(1);
 
   useEffect(() => {
     setCurrentDeck(themes[currentTheme].deck);

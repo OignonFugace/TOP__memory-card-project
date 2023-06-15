@@ -1,22 +1,27 @@
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { trimFullDeck, shuffleDeck, getDisplayedCards } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
 import ThemeContext from "../context/ThemeContextProvider.jsx";
 
 const START_GAME = "START_GAME";
 const RESET_STAGE = "RESET_STAGE";
+const SET_INITIAL_CURRENT_LEVEL_ID = "SET_INITIAL_CURRENT_LEVEL_ID";
 const LAUNCH_STAGE = "LAUNCH_STAGE";
 const INITIATE_LEVELS = "INITIATE_LEVELS";
+const SET_HIGHEST_LEVEL_ACHIEVED = "SET_HIGHEST_LEVEL_ACHIEVED";
 const PASS_LEVEL = "PASS_LEVEL";
 const SELECT_CARD = "SELECT_CARD";
+const DISPLAY_CARDS = "DISPLAY_CARDS";
 const OPEN_MODAL = "OPEN_MODAL";
 const CLOSE_MODAL = "CLOSE_MODAL";
 
 const GAME_STATE_RUNNING = "GAME_STATE_RUNNING";
 const GAME_STATE_FINISHED = "GAME_STATE_FINISHED";
+
 const STAGE_STATE_RUNNING = "STAGE_STATE_RUNNING";
-const STAGE_STATE_LOST = "STAGE_STATE_LOST"; 
+const STAGE_STATE_LOST = "STAGE_STATE_LOST";
 const STAGE_STATE_WON = "STAGE_STATE_WON";
+
 const LEVEL_STATE_CLOSED = "LEVEL_STATE_CLOSED";
 const LEVEL_STATE_OPEN = "LEVEL_STATE_OPEN";
 const LEVEL_STATE_PASSED = "LEVEL_STATE_PASSED";
@@ -33,19 +38,33 @@ function deckReducer(state, action) {
 
     case SELECT_CARD:
       if (action.payload.isClicked) return state;
-      const newPlayingDeck = shuffleDeck(
-        state.playingDeck.map((card) =>
-          card.id === action.payload.id ? { ...card, isClicked: true } : card
-        )
-      );
-      const newDisplayedCards = getDisplayedCards(
-        newPlayingDeck,
-        state.leves.levels[state.levels.currentLevelId - 1].totalDisplayedCards
+      const newPlayingDeck = state.playingDeck.map((card) =>
+        card.id === action.payload.id ? { ...card, isClicked: true } : card
       );
       return {
         ...state,
         playingDeck: newPlayingDeck,
+      };
+
+    case DISPLAY_CARDS:
+      const newShuffledPlayingDeck = shuffleDeck(state.playingDeck);
+      const newDisplayedCards = getDisplayedCards(
+        newShuffledPlayingDeck,
+        action.totalDisplayedCards
+      );
+      return {
+        ...state,
+        playingDeck: newShuffledPlayingDeck,
         displayedCards: newDisplayedCards,
+      };
+
+    case RESET_STAGE:
+      return {
+        ...state,
+        playingDeck: state.playingDeck?.map((card) => ({
+          ...card,
+          isClicked: false,
+        })),
       };
 
     default:
@@ -58,18 +77,34 @@ function levelReducer(state, action) {
     case START_GAME:
       return {
         ...state,
-        levels: state.levels.map((level) => ({ ...level, state: LEVEL_STATE_CLOSED})),
+        levels: state.levels.map((level) => ({
+          ...level,
+          state: LEVEL_STATE_CLOSED,
+        })),
+      };
+
+    case SET_INITIAL_CURRENT_LEVEL_ID:
+      return {
+        ...state,
+        currentLevelId: action.payload.currentLevelId,
+      };
+
+    case SET_HIGHEST_LEVEL_ACHIEVED:
+      return {
+        ...state,
+        highestLevelAchievedCopy: action.payload,
       };
 
     case INITIATE_LEVELS:
       return {
+        ...state,
         levels: state.levels.map((level) =>
-          level.id < action.highestLevelAchieved
+          level.id < action.highestLevelAchievedCopy
             ? {
                 ...level,
                 state: LEVEL_STATE_OPEN,
               }
-            : level.id > action.highestLevelAchieved
+            : level.id > action.highestLevelAchievedCopy
             ? {
                 ...level,
                 state: LEVEL_STATE_CLOSED,
@@ -78,20 +113,20 @@ function levelReducer(state, action) {
                 ...level,
                 state: LEVEL_STATE_INPROGRESS,
               }
-        )
-      }
+        ),
+      };
 
     case PASS_LEVEL:
       let newCurrentLevelId = state.currentLevelId;
       let newGameState = state.gameState;
+      let newHighestLevelAchieved = state.highestLevelAchievedCopy;
 
       if (state.currentLevelId < state.levels.length) {
         newCurrentLevelId = state.currentLevelId + 1;
-        action.setHighestLevelAchieved((prevHighestLevelAchieved) =>
-          prevHighestLevelAchieved === state.currentLevelId
-            ? prevHighestLevelAchieved + 1
-            : prevHighestLevelAchieved
-        );
+        newHighestLevelAchieved =
+          state.highestLevelAchievedCopy === state.currentLevelId
+            ? state.highestLevelAchievedCopy + 1
+            : state.highestLevelAchievedCopy;
       } else {
         newGameState = GAME_STATE_FINISHED;
       }
@@ -109,13 +144,7 @@ function levelReducer(state, action) {
         levels: newLevels,
         currentLevelId: newCurrentLevelId,
         gameState: newGameState,
-      };
-
-    case RESET_STAGE:
-      return {
-        ...state,
-        levels: action.payload.levels,
-        currentLevelId: action.payload.currentLevelId,
+        highestLevelAchievedCopy: newHighestLevelAchieved,
       };
 
     default:
@@ -127,9 +156,10 @@ function scoreReducer(state, action) {
   switch (action.type) {
     case SELECT_CARD:
       if (action.payload.isClicked) {
+        console.log("Triggered");
         return {
           ...state,
-          stageState: "lost",
+          stageState: STAGE_STATE_LOST,
         };
       }
       const newScore = state.score + 1;
@@ -153,6 +183,7 @@ function scoreReducer(state, action) {
       return {
         ...state,
         score: 0,
+        stageState: STAGE_STATE_RUNNING,
       };
 
     default:
@@ -194,19 +225,18 @@ function gameReducer(state, action) {
 }
 
 function useGame({ handleBackToFrontPage }) {
-  const { currentDeck, highestLevelAchieved, setHighestLevelAchieved } = useContext(ThemeContext);
+  const { currentDeck, highestLevelAchieved, setHighestLevelAchieved } =
+    useContext(ThemeContext);
 
   const initialState = {
     deck: {
-      currentDeck: currentDeck,
       playingDeck: null,
       displayedCards: null,
     },
     levels: {
       levels: levelsData || null,
       currentLevelId: levelsData[0].id || null,
-      highestLevelAchieved: highestLevelAchieved,
-      levelPassed: false,
+      highestLevelAchievedCopy: null,
     },
     score: {
       gameState: GAME_STATE_RUNNING,
@@ -223,39 +253,35 @@ function useGame({ handleBackToFrontPage }) {
 
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
-  
   useEffect(() => {
     dispatch({ type: START_GAME });
   }, []);
 
-
   useEffect(() => {
-    const shuffledDeck = shuffleDeck(currentDeck);
-    const currentLevel = state.levels.levels[state.levels.currentLevelId - 1];
-    const totalDisplayedCards =
-      state.levels.levels[state.levels.currentLevelId - 1].totalDisplayedCards;
-    const playingDeck = trimFullDeck(shuffledDeck, currentLevel).map(
-      (card) => ({
-        ...card,
-        isClicked: false,
-      })
-    );
+    if (currentDeck && state.levels.currentLevelId) {
+      const shuffledDeck = shuffleDeck(currentDeck);
+      const currentLevel = state.levels.levels[state.levels.currentLevelId - 1];
 
-    dispatch({
-      type: LAUNCH_STAGE,
-      payload: {
-        playingDeck: playingDeck,
-        displayedCards: getDisplayedCards(playingDeck, totalDisplayedCards),
-        maxScore: playingDeck.length,
-      },
-    });
+      const totalDisplayedCards =
+        state.levels.levels[state.levels.currentLevelId - 1]
+          .totalDisplayedCards;
+      const playingDeck = trimFullDeck(shuffledDeck, currentLevel).map(
+        (card) => ({
+          ...card,
+          isClicked: false,
+        })
+      );
+
+      dispatch({
+        type: LAUNCH_STAGE,
+        payload: {
+          playingDeck: playingDeck,
+          displayedCards: getDisplayedCards(playingDeck, totalDisplayedCards),
+          maxScore: playingDeck.length,
+        },
+      });
+    }
   }, [currentDeck, state.levels.currentLevelId]);
-
-
-  useEffect(() => {
-    dispatch({ type: INITIATE_LEVELS, highestLevelAchieved: highestLevelAchieved });
-  }, [highestLevelAchieved]);
-
 
   useEffect(() => {
     const stageState = state.score.stageState;
@@ -265,16 +291,47 @@ function useGame({ handleBackToFrontPage }) {
       dispatch({ type: OPEN_MODAL, payload: handleBackToFrontPage });
     } else if (stageState === STAGE_STATE_LOST) {
       dispatch({ type: OPEN_MODAL });
+      dispatch({
+        type: DISPLAY_CARDS,
+        totalDisplayedCards:
+          state.levels.levels[state.levels.currentLevelId - 1]
+            .totalDisplayedCards,
+      });
+      dispatch({ type: RESET_STAGE });
+      dispatch({ type: DISPLAY_CARDS });
     } else if (stageState === STAGE_STATE_WON) {
       if (state.levels.currentLevelId >= state.levels.levels.length) {
-        dispatch({ type: PASS_LEVEL, setHighestLevelAchieved: setHighestLevelAchieved });
+        dispatch({
+          type: PASS_LEVEL,
+          highestLevelAchieved: state.levels.highestLevelAchievedCopy,
+        });
       }
       dispatch({
-        type: OPEN_MODAL,
-        payload: () => dispatch({ type: PASS_LEVEL, payload: setHighestLevelAchieved }),
+        type: PASS_LEVEL,
+        highestLevelAchieved: state.levels.highestLevelAchievedCopy,
       });
+      // dispatch({
+      //   type: OPEN_MODAL,
+      //   payload: () =>
+      //     dispatch({ type: PASS_LEVEL, payload: setHighestLevelAchieved }),
+      // });
     }
-  }, [state.score.stageState]);
+  }, [state.score.stageState, state.score.gameState]);
+
+  useEffect(() => {
+    dispatch({
+      type: SET_HIGHEST_LEVEL_ACHIEVED,
+      payload: highestLevelAchieved,
+    });
+  }, [highestLevelAchieved]);
+
+  useEffect(() => {
+    dispatch({
+      type: INITIATE_LEVELS,
+      highestLevelAchievedCopy: state.levels.highestLevelAchievedCopy,
+    });
+    setHighestLevelAchieved(state.levels.highestLevelAchievedCopy);
+  }, [state.levels.highestLevelAchievedCopy]);
 
   return {
     displayedCards: state.deck.displayedCards,

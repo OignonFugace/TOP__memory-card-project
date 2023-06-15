@@ -8,7 +8,7 @@ function CardList() {
 
   return (
     <div className="card-list">
-      {displayedCards.map((card) => (
+      {displayedCards?.map((card) => (
         <Card key={card.id} card={card} />
       ))}
     </div>

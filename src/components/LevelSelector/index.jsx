@@ -2,6 +2,8 @@ import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
 import "./levelSelector.css";
 
+const LEVEL_STATE_CLOSED = "LEVEL_STATE_CLOSED";
+
 function LevelSelector({ startGameAtLevel }) {
   const { levels } = useContext(GameContext);
 
@@ -11,11 +13,11 @@ function LevelSelector({ startGameAtLevel }) {
         <button
           key={level.id}
           onClick={() => {
-            if (level.state !== "closed") {
+            if (level.state !== LEVEL_STATE_CLOSED) {
               startGameAtLevel(level.id);
             }
           }}
-          disabled={level.state === "closed"}
+          disabled={level.state === LEVEL_STATE_CLOSED}
         >
           {level.name} - {level.difficulty}
         </button>

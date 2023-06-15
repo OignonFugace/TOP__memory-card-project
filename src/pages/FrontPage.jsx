@@ -3,11 +3,13 @@ import LevelSelector from "../components/LevelSelector";
 import ThemeSelector from "../components/ThemeSelector";
 import GameContext from "../context/GameContextProvider";
 
-function FrontPage({ initiateGame }) {
-  const context = useContext(GameContext);
+const SET_INITIAL_CURRENT_LEVEL_ID = "SET_INITIAL_CURRENT_LEVEL_ID";
 
-  const startGameAtLevel = (level) => {
-    context.setCurrentLevelId(level);
+function FrontPage({ initiateGame }) {
+  const { dispatch } = useContext(GameContext);
+
+  const startGameAtLevel = (levelId) => {
+    dispatch({ type: SET_INITIAL_CURRENT_LEVEL_ID, payload: { currentLevelId: levelId } })
     initiateGame();
   };
 

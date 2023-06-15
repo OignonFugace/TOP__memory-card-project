@@ -1,18 +1,17 @@
 import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
-import ThemeContext from "../../context/ThemeContextProvider";
 import "./modal.css";
 
 const CLOSE_MODAL = "CLOSE_MODAL";
 const RESET_STAGE = "RESET_STAGE";
+const DISPLAY_CARDS = "DISPLAY_CARDS";
 
 const GAME_STATE_FINISHED = "GAME_STATE_FINISHED";
 const STAGE_STATE_LOST = "STAGE_STATE_LOST"; 
 const STAGE_STATE_WON = "STAGE_STATE_WON";
 
 function Modal() {
-  const { dispatch, gameState, stageState, isModalOpen } = useContext(GameContext);
-  const { currentDeck } = useContext(ThemeContext);
+  const { dispatch, gameState, stageState, isModalOpen, levels, currentLevelId } = useContext(GameContext);
 
   if (!isModalOpen) return null;
 
@@ -36,7 +35,8 @@ function Modal() {
   
   function handleCloseModal() {
     dispatch({ type: CLOSE_MODAL });
-    dispatch({ type: RESET_STAGE, payload: [...currentDeck] });
+    dispatch({ type: RESET_STAGE });
+    dispatch({ type: DISPLAY_CARDS, totalDisplayedCards: levels[currentLevelId - 1].totalDisplayedCards });
   }
 
   return (
