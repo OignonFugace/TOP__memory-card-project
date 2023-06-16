@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import GameContext from "../../context/GameContextProvider";
 import "./modal.css";
 import {
@@ -16,6 +16,19 @@ function Modal() {
     modalCallback();
     dispatch({ type: CLOSE_MODAL });
   }
+
+  useEffect(() => {
+    const handleKeyUp = (event) => {
+      if (event.key === "Enter") {
+        handleCloseModal();
+      }
+    }
+    if (isModalOpen) {
+      window.addEventListener("keyup", handleKeyUp);
+    }
+    return () => 
+      window.removeEventListener("keyup", handleKeyUp);
+  }, [isModalOpen]);
 
   if (!isModalOpen) return null;
 
@@ -41,7 +54,7 @@ function Modal() {
     <div className="modal-overlay">
       <div className="modal">
         <h2>{bodyMessage}</h2>
-        <button onClick={handleCloseModal}>{buttonMessage}</button>
+        <button onClick={handleCloseModal} >{buttonMessage}</button>
       </div>
     </div>
   );
