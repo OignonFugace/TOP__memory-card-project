@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import useLocalStorage from "./useLocalStorage.jsx";
 import { animalsDeck } from "../data/animalsDeck.js";
 import { artsAndLeisureDeck } from "../data/artsAndLeisureDeck.js";
 import { dinosaursDeck } from "../data/dinosaursDeck.js";
@@ -33,8 +32,8 @@ const themesData = {
 };
 
 function useTheme() {
-  const [themes, setThemes] = useState(themesData);
-  const [currentTheme, setCurrentTheme] = useState("professions");
+  const [themes, setThemes] = useLocalStorage("themes", themesData);
+  const [currentTheme, setCurrentTheme] = useLocalStorage("currentTheme", "professions");
 
   return {
     themes,
