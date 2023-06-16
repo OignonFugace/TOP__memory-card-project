@@ -8,6 +8,7 @@ import {
   STAGE_STATE_WON,
   STAGE_STATE_LOST,
 } from "../../utils/constants";
+import LanguageContext from "../../context/LanguageContext";
 
 function handleClick(card, score, maxScore, dispatch) {
   if (card.isClicked) {
@@ -23,6 +24,7 @@ function handleClick(card, score, maxScore, dispatch) {
 }
 
 function Card({ card }) {
+  const { t } = useContext(LanguageContext);
   const { dispatch, score, maxScore } = useContext(GameContext);
 
   return (
@@ -30,7 +32,7 @@ function Card({ card }) {
       className="card"
       onClick={() => handleClick(card, score, maxScore, dispatch)}
     >
-      <p>{card.itemName.fr}</p>
+      <p>{card.itemName[t("language")]}</p>
     </div>
   );
 }

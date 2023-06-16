@@ -3,10 +3,12 @@ import CardList from "../components/CardList";
 import GameContext from "../context/GameContextProvider";
 import Modal from "../components/Modal";
 import ThemeContext from "../context/ThemeContextProvider";
+import LanguageContext from "../context/LanguageContext";
 
 const LOAD_GAME_THEME = "LOAD_GAME_THEME";
 
 function GamePage() {
+  const { t } = useContext(LanguageContext);
   const {
     dispatch,
     levels,
@@ -27,10 +29,10 @@ function GamePage() {
   return (
     <div>
       <header>
-        <button onClick={handleHeaderClick}>Back To Menu</button>
+        <button onClick={handleHeaderClick}>{t("backToMenu")}</button>
       </header>
-      <h1>Memory Card Game</h1>
-      <p>Don't click on the same card twice!</p>
+      <h1>{t("title")}</h1>
+      <p>{t("rule")}</p>
       <h2>
         {levels[currentLevelId - 1].name.fr} -{" "}
         {levels[currentLevelId - 1].difficulty.fr}
@@ -39,7 +41,7 @@ function GamePage() {
       <p>
         {score} / {maxScore}
       </p>
-      <p>{bestScore ? `Your record is ${bestScore}.` : ""}</p>
+      <p>{bestScore ? `${t("bestScoreMessage")} ${bestScore}.` : ""}</p>
 
       <Modal />
     </div>

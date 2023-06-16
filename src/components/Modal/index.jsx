@@ -7,8 +7,10 @@ import {
   STAGE_STATE_LOST,
   STAGE_STATE_WON,
 } from "../../utils/constants";
+import LanguageContext from "../../context/LanguageContext";
 
 function Modal() {
+  const { t } = useContext(LanguageContext);
   const { dispatch, gameState, stageState, isModalOpen, modalCallback } =
     useContext(GameContext);
 
@@ -34,20 +36,20 @@ function Modal() {
 
   const bodyMessage =
     gameState === GAME_STATE_FINISHED
-      ? "Well, you are best : you finished the game !"
+      ? t("gameEndMessage")
       : stageState === STAGE_STATE_WON
-      ? "You won!"
+      ? t("victoryMessage")
       : stageState === STAGE_STATE_LOST
-      ? "You lost..."
+      ? t("defeatMessage")
       : "";
 
   const buttonMessage =
     gameState === GAME_STATE_FINISHED
-      ? "Back To Menu"
+      ? t("backToMenu")
       : stageState === STAGE_STATE_WON
-      ? "Continue on next level"
+      ? t("victoryButton")
       : stageState === STAGE_STATE_LOST
-      ? "Try again"
+      ? t("defeatButton")
       : "";
 
   return (

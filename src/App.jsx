@@ -6,6 +6,7 @@ import { ThemeContextProvider } from "./context/ThemeContextProvider";
 import FrontPage from "./pages/FrontPage";
 import GamePage from "./pages/GamePage";
 import Loading from "./pages/Loading";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function App() {
   const [isAppLoading, setIsAppLoading] = useState(false);
@@ -39,6 +40,7 @@ function App() {
             </GameContextProvider>
           </ThemeContextProvider>
         )}
+        <LanguageSwitcher />
       </LanguageContextProvider>
     </div>
   );

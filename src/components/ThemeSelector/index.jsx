@@ -1,9 +1,11 @@
 import { useContext } from "react";
+import LanguageContext from "../../context/LanguageContext";
 import ThemeContext from "../../context/ThemeContextProvider";
 import "./ThemeSelector.css";
 import { themesData } from "../../data/themeData";
 
 function ThemeSelector() {
+  const { t } = useContext(LanguageContext);
   const { currentTheme, setCurrentTheme } = useContext(ThemeContext);
 
   function handleThemeChange(e) {
@@ -12,9 +14,9 @@ function ThemeSelector() {
 
   return (
     <div className="theme-selector">
-      <h2>Choose Your Adventure!</h2>
+      <h2>{t("subtitle")}</h2>
       <div>
-        <label htmlFor="theme-select">Pick Your Theme: </label>
+        <label htmlFor="theme-select">{t("themeSelectionPrompt")}</label>
         <select
           value={currentTheme}
           onChange={handleThemeChange}
@@ -22,7 +24,7 @@ function ThemeSelector() {
         >
           {Object.keys(themesData).map((themeKey) => (
             <option key={themeKey} value={themeKey}>
-              {themesData[themeKey].themeName.fr}
+              {themesData[themeKey].themeName[t("language")]}
             </option>
           ))}
         </select>
@@ -32,18 +34,3 @@ function ThemeSelector() {
 }
 
 export default ThemeSelector;
-
-// <option value="professions">Professions</option>
-// <option value="animals">Animals</option>
-// <option value="geometricShapes">Geometric Shapes</option>
-// <option value="worldFlags">World Flags</option>
-// <option value="vehicles">Vehicles</option>
-// <option value="musicalInstruments">Musical Instruments</option>
-// <option value="fruitsAndVegetables">Fruits and Vegetables</option>
-// <option value="famousMonuments">Famous Monuments</option>
-// <option value="space">Space</option>
-// <option value="flora">Flora</option>
-// <option value="dinosaurs">Dinosaurs</option>
-// <option value="toolsAndMachines">Tools and Machines</option>
-// <option value="sports">Sports</option>
-// <option value="artsAndLeisure">Arts and Leisure</option>

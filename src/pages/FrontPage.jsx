@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import LevelSelector from "../components/LevelSelector";
 import ThemeSelector from "../components/ThemeSelector";
 import GameContext from "../context/GameContextProvider";
+import LanguageContext from "../context/LanguageContext";
 
 const SET_CURRENT_LEVEL_ID = "SET_CURRENT_LEVEL_ID";
 const LOAD_STAGE = "LOAD_STAGE";
@@ -11,6 +12,7 @@ const SET_STAGE_STATE = "SET_STAGE_STATE";
 const STAGE_STATE_RUNNING = "STAGE_STATE_RUNNING";
 
 function FrontPage({ initiateGame }) {
+  const { t } = useContext(LanguageContext);
   const { dispatch } = useContext(GameContext);
 
   const startGameAtLevel = (levelId) => {
@@ -23,7 +25,7 @@ function FrontPage({ initiateGame }) {
 
   return (
     <div>
-      <h1>Memory Card Game</h1>
+      <h1>{t("title")}</h1>
       <ThemeSelector />
       <LevelSelector startGameAtLevel={startGameAtLevel} />
     </div>

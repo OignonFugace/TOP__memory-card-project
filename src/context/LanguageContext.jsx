@@ -1,19 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { en, fr } from "../data/locales";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const languages = { en, fr };
 
 const LanguageContext = createContext();
 
 function LanguageContextProvider({ children }) {
-  const [language, setLanguage] = useState("fr");
+  const [language, setLanguage] = useLocalStorage("language", "fr");
 
   const t = (key) => {
     return languages[language][key] || "";
   }
 
   return (
-    <LanguageContext.Provider value={{ t, setLanguage }}>
+    <LanguageContext.Provider value={{ t, language, setLanguage }}>
       { children }
     </LanguageContext.Provider>
   )
