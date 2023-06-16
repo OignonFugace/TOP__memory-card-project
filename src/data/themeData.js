@@ -1,17 +1,17 @@
-import { animalsDeck } from "../data/animalsDeck.js";
-import { artsAndLeisureDeck } from "../data/artsAndLeisureDeck.js";
-import { dinosaursDeck } from "../data/dinosaursDeck.js";
-import { famousMonumentsDeck } from "../data/famousMonumentsDeck.js";
-import { floraDeck } from "../data/floraDeck.js";
-import { fruitsAndVegetablesDeck } from "../data/fruitsAndVegetablesDeck.js";
-import { geometricShapesDeck } from "../data/geometricShapesDeck.js";
-import { musicalInstrumentsDeck } from "../data/musicalInstrumentsDeck.js";
-import { professionsDeck } from "../data/professionsDeck.js";
-import { spaceDeck } from "../data/spaceDeck.js";
-import { sportsDeck } from "../data/sportsDeck.js";
-import { toolsAndMachinesDeck } from "../data/toolsAndMachinesDeck.js";
-import { vehiclesDeck } from "../data/vehiclesDeck.js";
-import { worldFlagsDeck } from "../data/worldFlagsDeck.js";
+import { animalsDeck } from "../data/decks/animalsDeck.js";
+import { artsAndLeisureDeck } from "../data/decks/artsAndLeisureDeck.js";
+import { dinosaursDeck } from "../data/decks/dinosaursDeck.js";
+import { famousMonumentsDeck } from "../data/decks/famousMonumentsDeck.js";
+import { floraDeck } from "../data/decks/floraDeck.js";
+import { fruitsAndVegetablesDeck } from "../data/decks/fruitsAndVegetablesDeck.js";
+import { geometricShapesDeck } from "../data/decks/geometricShapesDeck.js";
+import { musicalInstrumentsDeck } from "../data/decks/musicalInstrumentsDeck.js";
+import { professionsDeck } from "../data/decks/professionsDeck.js";
+import { spaceDeck } from "../data/decks/spaceDeck.js";
+import { sportsDeck } from "../data/decks/sportsDeck.js";
+import { toolsAndMachinesDeck } from "../data/decks/toolsAndMachinesDeck.js";
+import { vehiclesDeck } from "../data/decks/vehiclesDeck.js";
+import { worldFlagsDeck } from "../data/decks/worldFlagsDeck.js";
 
 const themesData = {
   animals: {
