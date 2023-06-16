@@ -262,8 +262,3 @@ function useGame({ handleBackToFrontPage }) {
 
 export default useGame;
 
-// dispatch({
-//   type: OPEN_MODAL,
-//   payload: () =>
-//     dispatch({ type: PASS_LEVEL, payload: setHighestLevelAchieved }),
-// });
