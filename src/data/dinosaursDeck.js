@@ -1,103 +1,103 @@
 const dinosaursDeck = [
   {
     id: 1,
-    itemName: "Tyrannosaurus",
+    itemName: { en: "Tyrannosaurus", fr: "Tyrannosaure" },
   },
   {
     id: 2,
-    itemName: "Velociraptor",
+    itemName: { en: "Velociraptor", fr: "Vélociraptor" },
   },
   {
     id: 3,
-    itemName: "Triceratops",
+    itemName: { en: "Triceratops", fr: "Tricératops" },
   },
   {
     id: 4,
-    itemName: "Stegosaurus",
+    itemName: { en: "Stegosaurus", fr: "Stégosaure" },
   },
   {
     id: 5,
-    itemName: "Brachiosaurus",
+    itemName: { en: "Brachiosaurus", fr: "Brachiosaure" },
   },
   {
     id: 6,
-    itemName: "Spinosaurus",
+    itemName: { en: "Spinosaurus", fr: "Spinosaure" },
   },
   {
     id: 7,
-    itemName: "Ankylosaurus",
+    itemName: { en: "Ankylosaurus", fr: "Ankylosaure" },
   },
   {
     id: 8,
-    itemName: "Pterodactyl",
+    itemName: { en: "Pterodactyl", fr: "Ptérodactyle" },
   },
   {
     id: 9,
-    itemName: "Parasaurolophus",
+    itemName: { en: "Parasaurolophus", fr: "Parasaurolophus" },
   },
   {
     id: 10,
-    itemName: "Diplodocus",
+    itemName: { en: "Diplodocus", fr: "Diplodocus" },
   },
   {
     id: 11,
-    itemName: "Allosaurus",
+    itemName: { en: "Allosaurus", fr: "Allosaure" },
   },
   {
     id: 12,
-    itemName: "Compsognathus",
+    itemName: { en: "Compsognathus", fr: "Compsognathus" },
   },
   {
     id: 13,
-    itemName: "Pachycephalosaurus",
+    itemName: { en: "Pachycephalosaurus", fr: "Pachycéphalosaure" },
   },
   {
     id: 14,
-    itemName: "Giganotosaurus",
+    itemName: { en: "Giganotosaurus", fr: "Giganotosaure" },
   },
   {
     id: 15,
-    itemName: "Iguanodon",
+    itemName: { en: "Iguanodon", fr: "Iguanodon" },
   },
   {
     id: 16,
-    itemName: "Kentrosaurus",
+    itemName: { en: "Kentrosaurus", fr: "Kentrosaure" },
   },
   {
     id: 17,
-    itemName: "Microraptor",
+    itemName: { en: "Microraptor", fr: "Microraptor" },
   },
   {
     id: 18,
-    itemName: "Oviraptor",
+    itemName: { en: "Oviraptor", fr: "Oviraptor" },
   },
   {
     id: 19,
-    itemName: "Quetzalcoatlus",
+    itemName: { en: "Quetzalcoatlus", fr: "Quetzalcoatlus" },
   },
   {
     id: 20,
-    itemName: "Raptor",
+    itemName: { en: "Raptor", fr: "Raptor" },
   },
   {
     id: 21,
-    itemName: "Sauropelta",
+    itemName: { en: "Sauropelta", fr: "Sauropelta" },
   },
   {
     id: 22,
-    itemName: "Troodon",
+    itemName: { en: "Troodon", fr: "Troodon" },
   },
   {
     id: 23,
-    itemName: "Utahraptor",
+    itemName: { en: "Utahraptor", fr: "Utahraptor" },
   },
   {
     id: 24,
-    itemName: "Velocisaurus",
+    itemName: { en: "Velocisaurus", fr: "Vélocisaurus" },
   },
   {
     id: 25,
-    itemName: "Xenotarsosaurus",
+    itemName: { en: "Xenotarsosaurus", fr: "Xénotarsosaure" },
   },
 ];
 

@@ -1,103 +1,103 @@
 const toolsAndMachinesDeck = [
   {
     id: 1,
-    itemName: "Hammer",
+    itemName: { en: "Hammer", fr: "Marteau" },
   },
   {
     id: 2,
-    itemName: "Screwdriver",
+    itemName: { en: "Screwdriver", fr: "Tournevis" },
   },
   {
     id: 3,
-    itemName: "Wrench",
+    itemName: { en: "Wrench", fr: "Clé" },
   },
   {
     id: 4,
-    itemName: "Drill",
+    itemName: { en: "Drill", fr: "Perceuse" },
   },
   {
     id: 5,
-    itemName: "Saw",
+    itemName: { en: "Saw", fr: "Scie" },
   },
   {
     id: 6,
-    itemName: "Pliers",
+    itemName: { en: "Pliers", fr: "Pince" },
   },
   {
     id: 7,
-    itemName: "Tape Measure",
+    itemName: { en: "Tape Measure", fr: "Mètre ruban" },
   },
   {
     id: 8,
-    itemName: "Miter Saw",
+    itemName: { en: "Miter Saw", fr: "Scie à onglet" },
   },
   {
     id: 9,
-    itemName: "Nail Gun",
+    itemName: { en: "Nail Gun", fr: "Cloueuse" },
   },
   {
     id: 10,
-    itemName: "Wheelbarrow",
+    itemName: { en: "Wheelbarrow", fr: "Brouette" },
   },
   {
     id: 11,
-    itemName: "Shovel",
+    itemName: { en: "Shovel", fr: "Pelle" },
   },
   {
     id: 12,
-    itemName: "Rake",
+    itemName: { en: "Rake", fr: "Râteau" },
   },
   {
     id: 13,
-    itemName: "Axe",
+    itemName: { en: "Axe", fr: "Hache" },
   },
   {
     id: 14,
-    itemName: "Bulldozer",
+    itemName: { en: "Bulldozer", fr: "Bulldozer" },
   },
   {
     id: 15,
-    itemName: "Excavator",
+    itemName: { en: "Excavator", fr: "Excavatrice" },
   },
   {
     id: 16,
-    itemName: "Crane",
+    itemName: { en: "Crane", fr: "Grue" },
   },
   {
     id: 17,
-    itemName: "Forklift",
+    itemName: { en: "Forklift", fr: "Chariot élévateur" },
   },
   {
     id: 18,
-    itemName: "Power Drill",
+    itemName: { en: "Power Drill", fr: "Perceuse électrique" },
   },
   {
     id: 19,
-    itemName: "Chainsaw",
+    itemName: { en: "Chainsaw", fr: "Tronçonneuse" },
   },
   {
     id: 20,
-    itemName: "Welding Machine",
+    itemName: { en: "Welding Machine", fr: "Machine à souder" },
   },
   {
     id: 21,
-    itemName: "Circular Saw",
+    itemName: { en: "Circular Saw", fr: "Scie circulaire" },
   },
   {
     id: 22,
-    itemName: "Lathe",
+    itemName: { en: "Lathe", fr: "Tour à bois" },
   },
   {
     id: 23,
-    itemName: "Jigsaw",
+    itemName: { en: "Jigsaw", fr: "Scie sauteuse" },
   },
   {
     id: 24,
-    itemName: "Sander",
+    itemName: { en: "Sander", fr: "Ponceuse" },
   },
   {
     id: 25,
-    itemName: "Grinder",
+    itemName: { en: "Grinder", fr: "Meuleuse" },
   },
 ];
 

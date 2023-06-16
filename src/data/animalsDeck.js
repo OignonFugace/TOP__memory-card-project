@@ -1,104 +1,104 @@
 const animalsDeck = [
   {
     id: 1,
-    itemName: "Lion",
+    itemName: { en: "Lion", fr: "Lion" },
   },
   {
     id: 2,
-    itemName: "Elephant",
+    itemName: { en: "Elephant", fr: "Éléphant" },
   },
   {
     id: 3,
-    itemName: "Bear",
+    itemName: { en: "Bear", fr: "Ours" },
   },
   {
     id: 4,
-    itemName: "Monkey",
+    itemName: { en: "Monkey", fr: "Singe" },
   },
   {
     id: 5,
-    itemName: "Giraffe",
+    itemName: { en: "Giraffe", fr: "Girafe" },
   },
   {
     id: 6,
-    itemName: "Kangaroo",
+    itemName: { en: "Kangaroo", fr: "Kangourou" },
   },
   {
     id: 7,
-    itemName: "Tiger",
+    itemName: { en: "Tiger", fr: "Tigre" },
   },
   {
     id: 8,
-    itemName: "Penguin",
+    itemName: { en: "Penguin", fr: "Pingouin" },
   },
   {
     id: 9,
-    itemName: "Koala",
+    itemName: { en: "Koala", fr: "Koala" },
   },
   {
     id: 10,
-    itemName: "Rabbit",
+    itemName: { en: "Rabbit", fr: "Lapin" },
   },
   {
     id: 11,
-    itemName: "Fox",
+    itemName: { en: "Fox", fr: "Renard" },
   },
   {
     id: 12,
-    itemName: "Wolf",
+    itemName: { en: "Wolf", fr: "Loup" },
   },
   {
     id: 13,
-    itemName: "Zebra",
+    itemName: { en: "Zebra", fr: "Zèbre" },
   },
   {
     id: 14,
-    itemName: "Hippopotamus",
+    itemName: { en: "Hippopotamus", fr: "Hippopotame" },
   },
   {
     id: 15,
-    itemName: "Panda",
+    itemName: { en: "Panda", fr: "Panda" },
   },
   {
     id: 16,
-    itemName: "Frog",
+    itemName: { en: "Frog", fr: "Grenouille" },
   },
   {
     id: 17,
-    itemName: "Squirrel",
+    itemName: { en: "Squirrel", fr: "Écureuil" },
   },
   {
     id: 18,
-    itemName: "Owl",
+    itemName: { en: "Owl", fr: "Hibou" },
   },
   {
     id: 19,
-    itemName: "Alligator",
+    itemName: { en: "Alligator", fr: "Alligator" },
   },
   {
     id: 20,
-    itemName: "Horse",
+    itemName: { en: "Horse", fr: "Cheval" },
   },
   {
     id: 21,
-    itemName: "Deer",
+    itemName: { en: "Deer", fr: "Cerf" },
   },
   {
     id: 22,
-    itemName: "Eagle",
+    itemName: { en: "Eagle", fr: "Aigle" },
   },
   {
     id: 23,
-    itemName: "Dolphin",
+    itemName: { en: "Dolphin", fr: "Dauphin" },
   },
   {
     id: 24,
-    itemName: "Polar Bear",
+    itemName: { en: "Polar Bear", fr: "Ours polaire" },
   },
   {
     id: 25,
-    itemName: "Octopus",
-  }
+    itemName: { en: "Octopus", fr: "Pieuvre" },
+  },
 ];
 
 export { animalsDeck };

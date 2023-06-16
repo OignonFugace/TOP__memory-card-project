@@ -1,103 +1,103 @@
 const floraDeck = [
   {
     id: 1,
-    itemName: "Rose",
+    itemName: { en: "Rose", fr: "Rose" },
   },
   {
     id: 2,
-    itemName: "Tulip",
+    itemName: { en: "Tulip", fr: "Tulipe" },
   },
   {
     id: 3,
-    itemName: "Daisy",
+    itemName: { en: "Daisy", fr: "Marguerite" },
   },
   {
     id: 4,
-    itemName: "Sunflower",
+    itemName: { en: "Sunflower", fr: "Tournesol" },
   },
   {
     id: 5,
-    itemName: "Lily",
+    itemName: { en: "Lily", fr: "Lys" },
   },
   {
     id: 6,
-    itemName: "Orchid",
+    itemName: { en: "Orchid", fr: "Orchidée" },
   },
   {
     id: 7,
-    itemName: "Daffodil",
+    itemName: { en: "Daffodil", fr: "Jonquille" },
   },
   {
     id: 8,
-    itemName: "Poppy",
+    itemName: { en: "Poppy", fr: "Coquelicot" },
   },
   {
     id: 9,
-    itemName: "Iris",
+    itemName: { en: "Iris", fr: "Iris" },
   },
   {
     id: 10,
-    itemName: "Cherry Blossom",
+    itemName: { en: "Cherry Blossom", fr: "Fleur de cerisier" },
   },
   {
     id: 11,
-    itemName: "Lotus",
+    itemName: { en: "Lotus", fr: "Lotus" },
   },
   {
     id: 12,
-    itemName: "Lavender",
+    itemName: { en: "Lavender", fr: "Lavande" },
   },
   {
     id: 13,
-    itemName: "Hydrangea",
+    itemName: { en: "Hydrangea", fr: "Hortensia" },
   },
   {
     id: 14,
-    itemName: "Magnolia",
+    itemName: { en: "Magnolia", fr: "Magnolia" },
   },
   {
     id: 15,
-    itemName: "Peony",
+    itemName: { en: "Peony", fr: "Pivoine" },
   },
   {
     id: 16,
-    itemName: "Fern",
+    itemName: { en: "Fern", fr: "Fougère" },
   },
   {
     id: 17,
-    itemName: "Moss",
+    itemName: { en: "Moss", fr: "Mousse" },
   },
   {
     id: 18,
-    itemName: "Palm Tree",
+    itemName: { en: "Palm Tree", fr: "Palmier" },
   },
   {
     id: 19,
-    itemName: "Oak Tree",
+    itemName: { en: "Oak Tree", fr: "Chêne" },
   },
   {
     id: 20,
-    itemName: "Pine Tree",
+    itemName: { en: "Pine Tree", fr: "Pin" },
   },
   {
     id: 21,
-    itemName: "Maple Tree",
+    itemName: { en: "Maple Tree", fr: "Érable" },
   },
   {
     id: 22,
-    itemName: "Bamboo",
+    itemName: { en: "Bamboo", fr: "Bambou" },
   },
   {
     id: 23,
-    itemName: "Cactus",
+    itemName: { en: "Cactus", fr: "Cactus" },
   },
   {
     id: 24,
-    itemName: "Succulent",
+    itemName: { en: "Succulent", fr: "Plante grasse" },
   },
   {
     id: 25,
-    itemName: "Venus Flytrap",
+    itemName: { en: "Venus Flytrap", fr: "Dionée attrape-mouche" },
   },
 ];
 

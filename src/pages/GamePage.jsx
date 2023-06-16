@@ -32,8 +32,8 @@ function GamePage() {
       <h1>Memory Card Game</h1>
       <p>Don't click on the same card twice!</p>
       <h2>
-        {levels[currentLevelId - 1].name} -{" "}
-        {levels[currentLevelId - 1].difficulty}
+        {levels[currentLevelId - 1].name.fr} -{" "}
+        {levels[currentLevelId - 1].difficulty.fr}
       </h2>
       <CardList />
       <p>

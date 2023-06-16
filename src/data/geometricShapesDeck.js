@@ -1,104 +1,104 @@
 const geometricShapesDeck = [
   {
     id: 1,
-    itemName: "Circle",
+    itemName: { en: "Circle", fr: "Cercle" },
   },
   {
     id: 2,
-    itemName: "Square",
+    itemName: { en: "Square", fr: "Carré" },
   },
   {
     id: 3,
-    itemName: "Triangle",
+    itemName: { en: "Triangle", fr: "Triangle" },
   },
   {
     id: 4,
-    itemName: "Rectangle",
+    itemName: { en: "Rectangle", fr: "Rectangle" },
   },
   {
     id: 5,
-    itemName: "Pentagon",
+    itemName: { en: "Pentagon", fr: "Pentagone" },
   },
   {
     id: 6,
-    itemName: "Hexagon",
+    itemName: { en: "Hexagon", fr: "Hexagone" },
   },
   {
     id: 7,
-    itemName: "Heptagon",
+    itemName: { en: "Heptagon", fr: "Heptagone" },
   },
   {
     id: 8,
-    itemName: "Octagon",
+    itemName: { en: "Octagon", fr: "Octogone" },
   },
   {
     id: 9,
-    itemName: "Nonagon",
+    itemName: { en: "Nonagon", fr: "Nonagone" },
   },
   {
     id: 10,
-    itemName: "Decagon",
+    itemName: { en: "Decagon", fr: "Décagone" },
   },
   {
     id: 11,
-    itemName: "Ellipse",
+    itemName: { en: "Ellipse", fr: "Ellipse" },
   },
   {
     id: 12,
-    itemName: "Star",
+    itemName: { en: "Star", fr: "Étoile" },
   },
   {
     id: 13,
-    itemName: "Heart",
+    itemName: { en: "Heart", fr: "Cœur" },
   },
   {
     id: 14,
-    itemName: "Diamond",
+    itemName: { en: "Diamond", fr: "Losange" },
   },
   {
     id: 15,
-    itemName: "Trapezoid",
+    itemName: { en: "Trapezoid", fr: "Trapèze" },
   },
   {
     id: 16,
-    itemName: "Parallelogram",
+    itemName: { en: "Parallelogram", fr: "Parallélogramme" },
   },
   {
     id: 17,
-    itemName: "Rhombus",
+    itemName: { en: "Rhombus", fr: "Losange" },
   },
   {
     id: 18,
-    itemName: "Crescent",
+    itemName: { en: "Crescent", fr: "Croissant" },
   },
   {
     id: 19,
-    itemName: "Semicircle",
+    itemName: { en: "Semicircle", fr: "Semicercle" },
   },
   {
     id: 20,
-    itemName: "Oval",
+    itemName: { en: "Oval", fr: "Ovale" },
   },
   {
     id: 21,
-    itemName: "Cube",
+    itemName: { en: "Cube", fr: "Cube" },
   },
   {
     id: 22,
-    itemName: "Sphere",
+    itemName: { en: "Sphere", fr: "Sphère" },
   },
   {
     id: 23,
-    itemName: "Cylinder",
+    itemName: { en: "Cylinder", fr: "Cylindre" },
   },
   {
     id: 24,
-    itemName: "Pyramid",
+    itemName: { en: "Pyramid", fr: "Pyramide" },
   },
   {
     id: 25,
-    itemName: "Cone",
-  }
+    itemName: { en: "Cone", fr: "Cône" },
+  },
 ];
 
 export { geometricShapesDeck };

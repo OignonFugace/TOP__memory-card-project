@@ -1,103 +1,103 @@
 const musicalInstrumentsDeck = [
   {
     id: 1,
-    itemName: "Piano",
+    itemName: { en: "Piano", fr: "Piano" },
   },
   {
     id: 2,
-    itemName: "Guitar",
+    itemName: { en: "Guitar", fr: "Guitare" },
   },
   {
     id: 3,
-    itemName: "Violin",
+    itemName: { en: "Violin", fr: "Violon" },
   },
   {
     id: 4,
-    itemName: "Drums",
+    itemName: { en: "Drums", fr: "Batterie" },
   },
   {
     id: 5,
-    itemName: "Flute",
+    itemName: { en: "Flute", fr: "Flûte" },
   },
   {
     id: 6,
-    itemName: "Saxophone",
+    itemName: { en: "Saxophone", fr: "Saxophone" },
   },
   {
     id: 7,
-    itemName: "Trumpet",
+    itemName: { en: "Trumpet", fr: "Trompette" },
   },
   {
     id: 8,
-    itemName: "Cello",
+    itemName: { en: "Cello", fr: "Violoncelle" },
   },
   {
     id: 9,
-    itemName: "Clarinet",
+    itemName: { en: "Clarinet", fr: "Clarinette" },
   },
   {
     id: 10,
-    itemName: "Harp",
+    itemName: { en: "Harp", fr: "Harpe" },
   },
   {
     id: 11,
-    itemName: "Accordion",
+    itemName: { en: "Accordion", fr: "Accordéon" },
   },
   {
     id: 12,
-    itemName: "Bagpipes",
+    itemName: { en: "Bagpipes", fr: "Cornemuse" },
   },
   {
     id: 13,
-    itemName: "Banjo",
+    itemName: { en: "Banjo", fr: "Banjo" },
   },
   {
     id: 14,
-    itemName: "Bass Guitar",
+    itemName: { en: "Bass Guitar", fr: "Guitare basse" },
   },
   {
     id: 15,
-    itemName: "Double Bass",
+    itemName: { en: "Double Bass", fr: "Contrebasse" },
   },
   {
     id: 16,
-    itemName: "Mandolin",
+    itemName: { en: "Mandolin", fr: "Mandoline" },
   },
   {
     id: 17,
-    itemName: "Oboe",
+    itemName: { en: "Oboe", fr: "Hautbois" },
   },
   {
     id: 18,
-    itemName: "Trombone",
+    itemName: { en: "Trombone", fr: "Trombone" },
   },
   {
     id: 19,
-    itemName: "Tuba",
+    itemName: { en: "Tuba", fr: "Tuba" },
   },
   {
     id: 20,
-    itemName: "Ukulele",
+    itemName: { en: "Ukulele", fr: "Ukulélé" },
   },
   {
     id: 21,
-    itemName: "Xylophone",
+    itemName: { en: "Xylophone", fr: "Xylophone" },
   },
   {
     id: 22,
-    itemName: "Balalaika",
+    itemName: { en: "Balalaika", fr: "Balalaïka" },
   },
   {
     id: 23,
-    itemName: "Bongos",
+    itemName: { en: "Bongos", fr: "Bongos" },
   },
   {
     id: 24,
-    itemName: "Congas",
+    itemName: { en: "Congas", fr: "Congas" },
   },
   {
     id: 25,
-    itemName: "Sitar",
+    itemName: { en: "Sitar", fr: "Sitar" },
   },
 ];
 

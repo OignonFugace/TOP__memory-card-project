@@ -30,7 +30,7 @@ function Card({ card }) {
       className="card"
       onClick={() => handleClick(card, score, maxScore, dispatch)}
     >
-      <p>{card.itemName}</p>
+      <p>{card.itemName.fr}</p>
     </div>
   );
 }

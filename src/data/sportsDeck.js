@@ -1,103 +1,103 @@
 const sportsDeck = [
   {
     id: 1,
-    itemName: "Soccer",
+    itemName: { en: "Soccer", fr: "Football" },
   },
   {
     id: 2,
-    itemName: "Basketball",
+    itemName: { en: "Basketball", fr: "Basketball" },
   },
   {
     id: 3,
-    itemName: "Tennis",
+    itemName: { en: "Tennis", fr: "Tennis" },
   },
   {
     id: 4,
-    itemName: "Baseball",
+    itemName: { en: "Baseball", fr: "Baseball" },
   },
   {
     id: 5,
-    itemName: "Swimming",
+    itemName: { en: "Swimming", fr: "Natation" },
   },
   {
     id: 6,
-    itemName: "Football",
+    itemName: { en: "Football", fr: "Football américain" },
   },
   {
     id: 7,
-    itemName: "Golf",
+    itemName: { en: "Golf", fr: "Golf" },
   },
   {
     id: 8,
-    itemName: "Cycling",
+    itemName: { en: "Cycling", fr: "Cyclisme" },
   },
   {
     id: 9,
-    itemName: "Volleyball",
+    itemName: { en: "Volleyball", fr: "Volleyball" },
   },
   {
     id: 10,
-    itemName: "Hockey",
+    itemName: { en: "Hockey", fr: "Hockey" },
   },
   {
     id: 11,
-    itemName: "Skiing",
+    itemName: { en: "Skiing", fr: "Ski" },
   },
   {
     id: 12,
-    itemName: "Boxing",
+    itemName: { en: "Boxing", fr: "Boxe" },
   },
   {
     id: 13,
-    itemName: "Skateboarding",
+    itemName: { en: "Skateboarding", fr: "Skateboard" },
   },
   {
     id: 14,
-    itemName: "Rugby",
+    itemName: { en: "Rugby", fr: "Rugby" },
   },
   {
     id: 15,
-    itemName: "Ice Skating",
+    itemName: { en: "Ice Skating", fr: "Patinage sur glace" },
   },
   {
     id: 16,
-    itemName: "Gymnastics",
+    itemName: { en: "Gymnastics", fr: "Gymnastique" },
   },
   {
     id: 17,
-    itemName: "Archery",
+    itemName: { en: "Archery", fr: "Tir à l'arc" },
   },
   {
     id: 18,
-    itemName: "Surfing",
+    itemName: { en: "Surfing", fr: "Surf" },
   },
   {
     id: 19,
-    itemName: "Badminton",
+    itemName: { en: "Badminton", fr: "Badminton" },
   },
   {
     id: 20,
-    itemName: "Horse Racing",
+    itemName: { en: "Horse Racing", fr: "Courses de chevaux" },
   },
   {
     id: 21,
-    itemName: "Table Tennis",
+    itemName: { en: "Table Tennis", fr: "Tennis de table" },
   },
   {
     id: 22,
-    itemName: "Rock Climbing",
+    itemName: { en: "Rock Climbing", fr: "Escalade" },
   },
   {
     id: 23,
-    itemName: "Fencing",
+    itemName: { en: "Fencing", fr: "Escrime" },
   },
   {
     id: 24,
-    itemName: "Karate",
+    itemName: { en: "Karate", fr: "Karaté" },
   },
   {
     id: 25,
-    itemName: "Yoga",
+    itemName: { en: "Yoga", fr: "Yoga" },
   },
 ];
 

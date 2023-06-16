@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ThemeContext from "../../context/ThemeContextProvider";
 import "./ThemeSelector.css";
+import { themesData } from "../../data/themeData";
 
 function ThemeSelector() {
   const { currentTheme, setCurrentTheme } = useContext(ThemeContext);
@@ -19,20 +20,11 @@ function ThemeSelector() {
           onChange={handleThemeChange}
           id="theme-select"
         >
-          <option value="professions">Professions</option>
-          <option value="animals">Animals</option>
-          <option value="geometricShapes">Geometric Shapes</option>
-          <option value="worldFlags">World Flags</option>
-          <option value="vehicles">Vehicles</option>
-          <option value="musicalInstruments">Musical Instruments</option>
-          <option value="fruitsAndVegetables">Fruits and Vegetables</option>
-          <option value="famousMonuments">Famous Monuments</option>
-          <option value="space">Space</option>
-          <option value="flora">Flora</option>
-          <option value="dinosaurs">Dinosaurs</option>
-          <option value="toolsAndMachines">Tools and Machines</option>
-          <option value="sports">Sports</option>
-          <option value="artsAndLeisure">Arts and Leisure</option>
+          {Object.keys(themesData).map((themeKey) => (
+            <option key={themeKey} value={themeKey}>
+              {themesData[themeKey].themeName.fr}
+            </option>
+          ))}
         </select>
       </div>
     </div>
@@ -40,3 +32,18 @@ function ThemeSelector() {
 }
 
 export default ThemeSelector;
+
+// <option value="professions">Professions</option>
+// <option value="animals">Animals</option>
+// <option value="geometricShapes">Geometric Shapes</option>
+// <option value="worldFlags">World Flags</option>
+// <option value="vehicles">Vehicles</option>
+// <option value="musicalInstruments">Musical Instruments</option>
+// <option value="fruitsAndVegetables">Fruits and Vegetables</option>
+// <option value="famousMonuments">Famous Monuments</option>
+// <option value="space">Space</option>
+// <option value="flora">Flora</option>
+// <option value="dinosaurs">Dinosaurs</option>
+// <option value="toolsAndMachines">Tools and Machines</option>
+// <option value="sports">Sports</option>
+// <option value="artsAndLeisure">Arts and Leisure</option>

@@ -1,103 +1,103 @@
 const fruitsAndVegetablesDeck = [
   {
     id: 1,
-    itemName: "Apple",
+    itemName: { en: "Apple", fr: "Pomme" },
   },
   {
     id: 2,
-    itemName: "Banana",
+    itemName: { en: "Banana", fr: "Banane" },
   },
   {
     id: 3,
-    itemName: "Cherry",
+    itemName: { en: "Cherry", fr: "Cerise" },
   },
   {
     id: 4,
-    itemName: "Date",
+    itemName: { en: "Date", fr: "Datte" },
   },
   {
     id: 5,
-    itemName: "Eggplant",
+    itemName: { en: "Eggplant", fr: "Aubergine" },
   },
   {
     id: 6,
-    itemName: "Fig",
+    itemName: { en: "Fig", fr: "Figue" },
   },
   {
     id: 7,
-    itemName: "Grape",
+    itemName: { en: "Grape", fr: "Raisin" },
   },
   {
     id: 8,
-    itemName: "Honeydew",
+    itemName: { en: "Honeydew", fr: "Melon miel" },
   },
   {
     id: 9,
-    itemName: "Iceberg Lettuce",
+    itemName: { en: "Iceberg Lettuce", fr: "Laitue iceberg" },
   },
   {
     id: 10,
-    itemName: "Jackfruit",
+    itemName: { en: "Jackfruit", fr: "Jacquier" },
   },
   {
     id: 11,
-    itemName: "Kiwi",
+    itemName: { en: "Kiwi", fr: "Kiwi" },
   },
   {
     id: 12,
-    itemName: "Lemon",
+    itemName: { en: "Lemon", fr: "Citron" },
   },
   {
     id: 13,
-    itemName: "Mango",
+    itemName: { en: "Mango", fr: "Mangue" },
   },
   {
     id: 14,
-    itemName: "Nectarine",
+    itemName: { en: "Nectarine", fr: "Nectarine" },
   },
   {
     id: 15,
-    itemName: "Orange",
+    itemName: { en: "Orange", fr: "Orange" },
   },
   {
     id: 16,
-    itemName: "Papaya",
+    itemName: { en: "Papaya", fr: "Papaye" },
   },
   {
     id: 17,
-    itemName: "Quince",
+    itemName: { en: "Quince", fr: "Coing" },
   },
   {
     id: 18,
-    itemName: "Raspberry",
+    itemName: { en: "Raspberry", fr: "Framboise" },
   },
   {
     id: 19,
-    itemName: "Strawberry",
+    itemName: { en: "Strawberry", fr: "Fraise" },
   },
   {
     id: 20,
-    itemName: "Tomato",
+    itemName: { en: "Tomato", fr: "Tomate" },
   },
   {
     id: 21,
-    itemName: "Ugli Fruit",
+    itemName: { en: "Ugli Fruit", fr: "Fruit Ugli" },
   },
   {
     id: 22,
-    itemName: "Vanilla Bean",
+    itemName: { en: "Vanilla Bean", fr: "Gousse de vanille" },
   },
   {
     id: 23,
-    itemName: "Watermelon",
+    itemName: { en: "Watermelon", fr: "Pastèque" },
   },
   {
     id: 24,
-    itemName: "Xigua",
+    itemName: { en: "Xigua", fr: "Xigua" },
   },
   {
     id: 25,
-    itemName: "Yellow Squash",
+    itemName: { en: "Yellow Squash", fr: "Courge jaune" },
   },
 ];
 

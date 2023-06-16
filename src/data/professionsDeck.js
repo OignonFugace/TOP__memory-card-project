@@ -1,103 +1,103 @@
 const professionsDeck = [
   {
     id: 1,
-    itemName: "Firefighter",
+    itemName: { en: "Firefighter", fr: "Pompier" },
   },
   {
     id: 2,
-    itemName: "Police Officer",
+    itemName: { en: "Police Officer", fr: "Agent de police" },
   },
   {
     id: 3,
-    itemName: "Doctor",
+    itemName: { en: "Doctor", fr: "Médecin" },
   },
   {
     id: 4,
-    itemName: "Teacher",
+    itemName: { en: "Teacher", fr: "Enseignant" },
   },
   {
     id: 5,
-    itemName: "Baker",
+    itemName: { en: "Baker", fr: "Boulanger" },
   },
   {
     id: 6,
-    itemName: "Mail Carrier",
+    itemName: { en: "Mail Carrier", fr: "Facteur" },
   },
   {
     id: 7,
-    itemName: "Farmer",
+    itemName: { en: "Farmer", fr: "Agriculteur" },
   },
   {
     id: 8,
-    itemName: "Carpenter",
+    itemName: { en: "Carpenter", fr: "Menuisier" },
   },
   {
     id: 9,
-    itemName: "Cook",
+    itemName: { en: "Cook", fr: "Cuisinier" },
   },
   {
     id: 10,
-    itemName: "Dentist",
+    itemName: { en: "Dentist", fr: "Dentiste" },
   },
   {
     id: 11,
-    itemName: "Astronaut",
+    itemName: { en: "Astronaut", fr: "Astronaute" },
   },
   {
     id: 12,
-    itemName: "Gardener",
+    itemName: { en: "Gardener", fr: "Jardinier" },
   },
   {
     id: 13,
-    itemName: "Fishmonger",
+    itemName: { en: "Fishmonger", fr: "Poissonnier" },
   },
   {
     id: 14,
-    itemName: "Mechanic",
+    itemName: { en: "Mechanic", fr: "Mécanicien" },
   },
   {
     id: 15,
-    itemName: "Veterinarian",
+    itemName: { en: "Veterinarian", fr: "Vétérinaire" },
   },
   {
     id: 16,
-    itemName: "Pilot",
+    itemName: { en: "Pilot", fr: "Pilote" },
   },
   {
     id: 17,
-    itemName: "Librarian",
+    itemName: { en: "Librarian", fr: "Bibliothécaire" },
   },
   {
     id: 18,
-    itemName: "Photographer",
+    itemName: { en: "Photographer", fr: "Photographe" },
   },
   {
     id: 19,
-    itemName: "Architect",
+    itemName: { en: "Architect", fr: "Architecte" },
   },
   {
     id: 20,
-    itemName: "Scuba Diver",
-  },  
+    itemName: { en: "Scuba Diver", fr: "Plongeur sous-marin" },
+  },
   {
     id: 21,
-    itemName: "Artist",
+    itemName: { en: "Artist", fr: "Artiste" },
   },
   {
     id: 22,
-    itemName: "Musician",
+    itemName: { en: "Musician", fr: "Musicien" },
   },
   {
     id: 23,
-    itemName: "Engineer",
+    itemName: { en: "Engineer", fr: "Ingénieur" },
   },
   {
     id: 24,
-    itemName: "Journalist",
+    itemName: { en: "Journalist", fr: "Journaliste" },
   },
   {
     id: 25,
-    itemName: "Scientist",
+    itemName: { en: "Scientist", fr: "Scientifique" },
   },
 ];
 

@@ -1,103 +1,103 @@
 const artsAndLeisureDeck = [
   {
     id: 1,
-    itemName: "Drawing",
+    itemName: { en: "Drawing", fr: "Dessin" },
   },
   {
     id: 2,
-    itemName: "Painting",
+    itemName: { en: "Painting", fr: "Peinture" },
   },
   {
     id: 3,
-    itemName: "Sculpture",
+    itemName: { en: "Sculpture", fr: "Sculpture" },
   },
   {
     id: 4,
-    itemName: "Photography",
+    itemName: { en: "Photography", fr: "Photographie" },
   },
   {
     id: 5,
-    itemName: "Dancing",
+    itemName: { en: "Dancing", fr: "Danse" },
   },
   {
     id: 6,
-    itemName: "Knitting",
+    itemName: { en: "Knitting", fr: "Tricot" },
   },
   {
     id: 7,
-    itemName: "Cooking",
+    itemName: { en: "Cooking", fr: "Cuisine" },
   },
   {
     id: 8,
-    itemName: "Gardening",
+    itemName: { en: "Gardening", fr: "Jardinage" },
   },
   {
     id: 9,
-    itemName: "Origami",
+    itemName: { en: "Origami", fr: "Origami" },
   },
   {
     id: 10,
-    itemName: "Pottery",
+    itemName: { en: "Pottery", fr: "Poterie" },
   },
   {
     id: 11,
-    itemName: "Magic tricks",
+    itemName: { en: "Magic tricks", fr: "Tour de magie" },
   },
   {
     id: 12,
-    itemName: "Ceramics",
+    itemName: { en: "Ceramics", fr: "Céramique" },
   },
   {
     id: 13,
-    itemName: "Baking",
+    itemName: { en: "Baking", fr: "Pâtisserie" },
   },
   {
     id: 14,
-    itemName: "Writing",
+    itemName: { en: "Writing", fr: "Écriture" },
   },
   {
     id: 15,
-    itemName: "Yoga",
+    itemName: { en: "Yoga", fr: "Yoga" },
   },
   {
     id: 16,
-    itemName: "Jewelry Making",
+    itemName: { en: "Jewelry Making", fr: "Fabrication de bijoux" },
   },
   {
     id: 17,
-    itemName: "Puppetry",
+    itemName: { en: "Puppetry", fr: "Marionnettes" },
   },
   {
     id: 18,
-    itemName: "Origami",
+    itemName: { en: "Origami", fr: "Origami" },
   },
   {
     id: 19,
-    itemName: "Meditation",
+    itemName: { en: "Meditation", fr: "Méditation" },
   },
   {
     id: 20,
-    itemName: "Bird Watching",
+    itemName: { en: "Bird Watching", fr: "Observation des oiseaux" },
   },
   {
     id: 21,
-    itemName: "Fishing",
+    itemName: { en: "Fishing", fr: "Pêche" },
   },
   {
     id: 22,
-    itemName: "Camping",
+    itemName: { en: "Camping", fr: "Camping" },
   },
   {
     id: 23,
-    itemName: "Board Games",
+    itemName: { en: "Board Games", fr: "Jeux de société" },
   },
   {
     id: 24,
-    itemName: "Sewing",
+    itemName: { en: "Sewing", fr: "Couture" },
   },
   {
     id: 25,
-    itemName: "Embroidery",
+    itemName: { en: "Embroidery", fr: "Broderie" },
   },
 ];
 

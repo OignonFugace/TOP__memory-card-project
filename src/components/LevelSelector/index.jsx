@@ -18,7 +18,7 @@ function LevelSelector({ startGameAtLevel }) {
           }}
           disabled={level.state === LEVEL_STATE_CLOSED}
         >
-          {level.name} - {level.difficulty}
+          {level.name.fr} - {level.difficulty.fr}
         </button>
       ))}
     </div>

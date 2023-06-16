@@ -179,8 +179,6 @@ function useGame({ handleBackToFrontPage }) {
     }));
   }, [state.highestLevelAchieved]);
 
-  useEffect(() => {}, [state.modalCallback]);
-
   useEffect(() => {
     switch (state.stageState) {
       case "STAGE_STATE_RUNNING": {
