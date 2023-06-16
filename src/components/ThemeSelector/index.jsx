@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import GameContext from "../../context/GameContextProvider";
 import ThemeContext from "../../context/ThemeContextProvider";
 import "./ThemeSelector.css";
 
@@ -15,7 +14,11 @@ function ThemeSelector() {
       <h2>Choose Your Adventure!</h2>
       <div>
         <label htmlFor="theme-select">Pick Your Theme: </label>
-        <select value={currentTheme} onChange={handleThemeChange} id="theme-select">
+        <select
+          value={currentTheme}
+          onChange={handleThemeChange}
+          id="theme-select"
+        >
           <option value="professions">Professions</option>
           <option value="animals">Animals</option>
           <option value="geometricShapes">Geometric Shapes</option>
@@ -33,7 +36,7 @@ function ThemeSelector() {
         </select>
       </div>
     </div>
-  )
+  );
 }
 
 export default ThemeSelector;

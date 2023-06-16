@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { GameContextProvider } from "./context/GameContextProvider";
 import { ThemeContextProvider } from "./context/ThemeContextProvider";

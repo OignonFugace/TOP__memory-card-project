@@ -1,17 +1,21 @@
 import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
 import "./modal.css";
-
-const CLOSE_MODAL = "CLOSE_MODAL";
-const RESET_STAGE = "RESET_STAGE";
-const DISPLAY_CARDS = "DISPLAY_CARDS";
-
-const GAME_STATE_FINISHED = "GAME_STATE_FINISHED";
-const STAGE_STATE_LOST = "STAGE_STATE_LOST"; 
-const STAGE_STATE_WON = "STAGE_STATE_WON";
+import {
+  CLOSE_MODAL,
+  GAME_STATE_FINISHED,
+  STAGE_STATE_LOST,
+  STAGE_STATE_WON,
+} from "../../utils/constants";
 
 function Modal() {
-  const { dispatch, gameState, stageState, isModalOpen, levels, currentLevelId } = useContext(GameContext);
+  const { dispatch, gameState, stageState, isModalOpen, modalCallback } =
+    useContext(GameContext);
+
+  function handleCloseModal() {
+    modalCallback();
+    dispatch({ type: CLOSE_MODAL });
+  }
 
   if (!isModalOpen) return null;
 
@@ -32,12 +36,6 @@ function Modal() {
       : stageState === STAGE_STATE_LOST
       ? "Try again"
       : "";
-  
-  function handleCloseModal() {
-    dispatch({ type: CLOSE_MODAL });
-    dispatch({ type: RESET_STAGE });
-    dispatch({ type: DISPLAY_CARDS, totalDisplayedCards: levels[currentLevelId - 1].totalDisplayedCards });
-  }
 
   return (
     <div className="modal-overlay">

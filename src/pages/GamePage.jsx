@@ -4,7 +4,7 @@ import GameContext from "../context/GameContextProvider";
 import Modal from "../components/Modal";
 import ThemeContext from "../context/ThemeContextProvider";
 
-const RESET_STAGE = "RESET_STAGE";
+const LOAD_GAME_THEME = "LOAD_GAME_THEME";
 
 function GamePage() {
   const {
@@ -16,11 +16,12 @@ function GamePage() {
     bestScore,
     handleBackToFrontPage,
   } = useContext(GameContext);
-  const { currentDeck } = useContext(ThemeContext);
+
+  const { themes, currentTheme } = useContext(ThemeContext);
 
   function handleHeaderClick() {
+    dispatch({ type: LOAD_GAME_THEME, payload: { themes, currentTheme } });
     handleBackToFrontPage();
-    dispatch({ type: RESET_STAGE, payload: [...currentDeck] });
   }
 
   return (

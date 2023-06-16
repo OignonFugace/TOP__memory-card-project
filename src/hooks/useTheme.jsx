@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { animalsDeck } from "../data/animalsDeck.js";
 import { artsAndLeisureDeck } from "../data/artsAndLeisureDeck.js";
@@ -35,31 +35,12 @@ const themesData = {
 function useTheme() {
   const [themes, setThemes] = useState(themesData);
   const [currentTheme, setCurrentTheme] = useState("professions");
-  const [currentDeck, setCurrentDeck] = useState(null);
-  const [highestLevelAchieved, setHighestLevelAchieved] = useState(1);
-
-  useEffect(() => {
-    setCurrentDeck(themes[currentTheme].deck);
-    setHighestLevelAchieved(themes[currentTheme].highestLevelAchieved);
-  }, [currentTheme]);
-
-  useEffect(() => {
-    setThemes(prevThemes => ({
-      ...prevThemes,
-      [currentTheme]: {
-        ...prevThemes[currentTheme],
-        highestLevelAchieved: highestLevelAchieved,
-      }
-    }))
-  }, [highestLevelAchieved])
 
   return {
+    themes,
+    setThemes,
     currentTheme,
     setCurrentTheme,
-    currentDeck,
-    setCurrentDeck,
-    highestLevelAchieved,
-    setHighestLevelAchieved,
   };
 }
 

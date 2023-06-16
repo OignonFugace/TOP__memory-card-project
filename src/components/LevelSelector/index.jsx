@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
 import "./levelSelector.css";
-
-const LEVEL_STATE_CLOSED = "LEVEL_STATE_CLOSED";
+import { LEVEL_STATE_CLOSED } from "../../utils/constants";
 
 function LevelSelector({ startGameAtLevel }) {
   const { levels } = useContext(GameContext);
