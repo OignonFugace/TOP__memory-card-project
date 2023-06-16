@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { GameContextProvider } from "./context/GameContextProvider";
+import { LanguageContextProvider } from "./context/LanguageContext";
 import { ThemeContextProvider } from "./context/ThemeContextProvider";
 import FrontPage from "./pages/FrontPage";
 import GamePage from "./pages/GamePage";
@@ -24,19 +25,21 @@ function App() {
         padding: "1rem",
       }}
     >
-      {isAppLoading ? (
-        <Loading />
-      ) : (
-        <ThemeContextProvider>
-          <GameContextProvider handleBackToFrontPage={() => setIsGameStarted(false)}>
-            {!isGameStarted ? (
-              <FrontPage initiateGame={() => setIsGameStarted(true)} />
-            ) : (
-              <GamePage />
-            )}
-          </GameContextProvider>
-        </ThemeContextProvider>
-      )}
+      <LanguageContextProvider>
+        {isAppLoading ? (
+          <Loading />
+        ) : (
+          <ThemeContextProvider>
+            <GameContextProvider handleBackToFrontPage={() => setIsGameStarted(false)}>
+              {!isGameStarted ? (
+                <FrontPage initiateGame={() => setIsGameStarted(true)} />
+              ) : (
+                <GamePage />
+              )}
+            </GameContextProvider>
+          </ThemeContextProvider>
+        )}
+      </LanguageContextProvider>
     </div>
   );
 }
