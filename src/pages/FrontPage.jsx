@@ -24,7 +24,7 @@ function FrontPage({ initiateGame }) {
   };
 
   return (
-    <div>
+    <div className="front-page">
       <h1>{t("title")}</h1>
       <ThemeSelector />
       <LevelSelector startGameAtLevel={startGameAtLevel} />

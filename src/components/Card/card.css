@@ -1,7 +1,26 @@
 .card {
+  --card-width: 220px;
+  --card-border-radius: 8px;
+
+  display: grid;
+  grid-template-rows: 1fr 1.5rem;
+
+  width: var(--card-width);
+  aspect-ratio: 2/3;
+  /* height: calc(var(--card-width) * 1.71); */
   border: 2px solid currentColor;
-  border-radius: 3px;
-  padding: 0 1ch;
+  border-radius: var(--card-border-radius);
+  padding: .6rem;
   cursor: pointer;
 }
 
+.card__picture {
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+}
+
+.card__title {
+  display: grid;
+  align-items: end;
+}

@@ -1,12 +1,9 @@
+/* APP */
 .App {
   display: grid;
   grid-template-rows: auto max-content;
   padding: 1rem;
   height: 100vh;
-}
-
-.App > * {
-  /* outline: 2px solid red; */
 }
 
 .app-footer {
@@ -15,10 +12,22 @@
   align-items: end;
 }
 
-.game-page > * {
-  /* outline: 2px solid brown; */
+/* FRONT PAGE */
+.front-page {
+  display: grid;
+  grid-template-rows: 2fr 1fr 4fr;
 }
 
+.front-page h1 {
+  align-self: center;
+  font-size: 4rem;
+}
+
+.front-page .level-selector {
+  /* align-self: start; */
+}
+
+/* GAME PAGE */
 .game-page {
   display: grid;
   grid-template-rows: 3rem 1fr;

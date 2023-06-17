@@ -1,6 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import LanguageContext from "../../context/LanguageContext";
 import GameContext from "../../context/GameContextProvider";
 import "./card.css";
+import sampleImg from "../../assets/img/sample.jpg";
 import {
   SELECT_CARD,
   SET_DISPLAYED_CARDS,
@@ -8,7 +10,7 @@ import {
   STAGE_STATE_WON,
   STAGE_STATE_LOST,
 } from "../../utils/constants";
-import LanguageContext from "../../context/LanguageContext";
+import useFitText from "use-fit-text";
 
 function handleClick(card, score, maxScore, dispatch) {
   if (card.isClicked) {
@@ -24,15 +26,34 @@ function handleClick(card, score, maxScore, dispatch) {
 }
 
 function Card({ card }) {
-  const { t } = useContext(LanguageContext);
+  const { t, language } = useContext(LanguageContext);
   const { dispatch, score, maxScore } = useContext(GameContext);
+  const { fontSize, ref } = useFitText();
+  const [renderCount, setRenderCount] = useState(0);
+
+  useEffect(() => {
+    setRenderCount(renderCount + 1);
+  }, [language]);
 
   return (
     <div
       className="card"
       onClick={() => handleClick(card, score, maxScore, dispatch)}
+      key={renderCount}
     >
-      <p>{card.itemName[t("language")]}</p>
+      <div
+        className="card__picture"
+        style={{ backgroundImage: `url(${sampleImg})` }}
+      ></div>
+
+      <div className="card__title">
+        <p
+          ref={ref}
+          style={{ fontSize, height: 34, width: 195, whiteSpace: "nowrap" }}
+        >
+          {card.itemName[t("language")]}
+        </p>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import GameContext from "../../context/GameContextProvider";
 import Card from "../Card";
 import "./cardList.css";
+import Tilt from "react-parallax-tilt";
 
 function CardList() {
   const { displayedCards } = useContext(GameContext);
@@ -9,7 +10,9 @@ function CardList() {
   return (
     <div className="card-list">
       {displayedCards?.map((card) => (
-        <Card key={card.id} card={card} />
+        <Tilt key={card.id} glareEnable={true}>
+          <Card card={card} />
+        </Tilt>
       ))}
     </div>
   );
