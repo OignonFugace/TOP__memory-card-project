@@ -19,6 +19,7 @@ import {
   LEVEL_STATE_OPEN,
   LEVEL_STATE_INPROGRESS,
 } from "../utils/constants";
+import useLocalStorage from "./useLocalStorage";
 
 function gameReducer(state, action) {
   switch (action.type) {
@@ -144,6 +145,8 @@ function gameReducer(state, action) {
 function useGame({ handleBackToFrontPage }) {
   const { themes, setThemes, currentTheme } = useContext(ThemeContext);
 
+  const [localStorageBestScore, setLocalStorageBestScore] = useLocalStorage("bestScore", 0);
+
   const initialState = {
     currentDeck: [],
     playingDeck: [],
@@ -155,7 +158,7 @@ function useGame({ handleBackToFrontPage }) {
     stageState: STAGE_STATE_RUNNING,
     score: 0,
     maxScore: null,
-    bestScore: 0,
+    bestScore: localStorageBestScore,
     isModalOpen: false,
     modalCallback: null,
   };
@@ -238,6 +241,10 @@ function useGame({ handleBackToFrontPage }) {
         break;
     }
   }, [state.stageState]);
+
+  useEffect(() => {
+    setLocalStorageBestScore(state.bestScore);
+  }, [state.bestScore]);
 
   return {
     displayedCards: state.displayedCards,
