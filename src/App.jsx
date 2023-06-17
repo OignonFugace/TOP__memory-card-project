@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { GameContextProvider } from "./context/GameContextProvider";
-import { LanguageContextProvider } from "./context/LanguageContext";
+import LanguageContext, { LanguageContextProvider } from "./context/LanguageContext";
 import { ThemeContextProvider } from "./context/ThemeContextProvider";
 import FrontPage from "./pages/FrontPage";
 import GamePage from "./pages/GamePage";
 import Loading from "./pages/Loading";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import GameRule from "./components/GameRule";
 
 function App() {
   const [isAppLoading, setIsAppLoading] = useState(false);
@@ -20,27 +21,27 @@ function App() {
   }, []);
 
   return (
-    <div
-      className="App"
-      style={{
-        padding: "1rem",
-      }}
-    >
+    <div className="App">
       <LanguageContextProvider>
         {isAppLoading ? (
           <Loading />
         ) : (
           <ThemeContextProvider>
-            <GameContextProvider handleBackToFrontPage={() => setIsGameStarted(false)}>
+            <GameContextProvider
+              handleBackToFrontPage={() => setIsGameStarted(false)}
+            >
               {!isGameStarted ? (
                 <FrontPage initiateGame={() => setIsGameStarted(true)} />
               ) : (
                 <GamePage />
               )}
+              <div className="app-footer">
+                <LanguageSwitcher />
+                <GameRule />
+              </div>
             </GameContextProvider>
           </ThemeContextProvider>
         )}
-        <LanguageSwitcher />
       </LanguageContextProvider>
     </div>
   );

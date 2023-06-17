@@ -1,5 +1,53 @@
-
-body {
-  max-width: 700px;
-  margin: 0 auto;
+.App {
+  display: grid;
+  grid-template-rows: auto max-content;
+  padding: 1rem;
+  height: 100vh;
 }
+
+.App > * {
+  /* outline: 2px solid red; */
+}
+
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.game-page > * {
+  /* outline: 2px solid brown; */
+}
+
+.game-page {
+  display: grid;
+  grid-template-rows: 3rem 1fr;
+}
+
+.game-page .top-bar {
+  align-self: start;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.game-page .game-board {
+  align-self: center;
+}
+
+.game-page .score-board {
+  text-align: right;
+}
+
+.game-page .level-indication {
+  font-size: 1.2rem;
+}
+
+.top-bar-left-corner {
+  text-align: left;
+}
+
+.top-bar-left-corner h1 {
+  font-size: 1.5rem;
+}
+

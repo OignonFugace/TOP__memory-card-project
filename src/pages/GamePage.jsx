@@ -27,21 +27,26 @@ function GamePage() {
   }
 
   return (
-    <div>
-      <header>
-        <button onClick={handleHeaderClick}>{t("backToMenu")}</button>
-      </header>
-      <h1>{t("title")}</h1>
-      <p>{t("rule")}</p>
-      <h2>
-        {levels[currentLevelId - 1].name.fr} -{" "}
-        {levels[currentLevelId - 1].difficulty.fr}
-      </h2>
-      <CardList />
-      <p>
-        {score} / {maxScore}
-      </p>
-      <p>{bestScore ? `${t("bestScoreMessage")} ${bestScore}.` : ""}</p>
+    <div className="game-page">
+      <div className="top-bar">
+        <div className="top-bar-left-corner">
+          <button onClick={handleHeaderClick}>{t("backToMenu")}</button>
+        </div>
+        <div className="score-board">
+          <p className="level-indication">
+            {levels[currentLevelId - 1].name.fr} -{" "}
+            {levels[currentLevelId - 1].difficulty.fr}
+          </p>
+          <p>
+            {t("score")}
+            {score} / {maxScore}
+          </p>
+          <p>{bestScore ? `${t("bestScoreMessage")} ${bestScore}.` : ""}</p>
+        </div>
+      </div>
+      <div className="game-board">
+        <CardList />
+      </div>
 
       <Modal />
     </div>
