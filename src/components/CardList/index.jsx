@@ -11,11 +11,13 @@ function CardList() {
   return (
     <div className="card-list">
       {displayedCards?.map((card) => (
-        <Tilt key={card.id} glareEnable={true}>
-          <div className="tilt-wrapper">
-            <Card card={card} isFlipped={isDeckFlipped} setIsFlipped={setIsDeckFlipped} />
-          </div>
-        </Tilt>
+        <div key={card.id} >
+          <Tilt glareEnable={true}>
+            <div className="tilt-wrapper">
+              <Card card={card} isFlipped={isDeckFlipped} setIsFlipped={setIsDeckFlipped} />
+            </div>
+          </Tilt>
+        </div>
       ))}
     </div>
   );

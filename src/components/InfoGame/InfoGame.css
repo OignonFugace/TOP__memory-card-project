@@ -1,0 +1,5 @@
+.info-game-trigger {
+	display: flex;
+	gap: 1ch;
+	align-items: center;
+}

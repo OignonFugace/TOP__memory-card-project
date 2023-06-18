@@ -47,6 +47,6 @@
 }
 
 .card .back-face {
-  background-color: white;
+  background-color: #F2EBE5;
   transform: rotateY(180deg);
 }

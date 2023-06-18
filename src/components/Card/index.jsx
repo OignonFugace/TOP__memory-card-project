@@ -70,7 +70,7 @@ function Card({ card, isFlipped, setIsFlipped }) {
         </div>
       </div>
 
-      <div className="card-face back-face">Some Text</div>
+      <div className="card-face back-face"></div>
     </div>
   );
 }

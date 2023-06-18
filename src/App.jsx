@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { GameContextProvider } from "./context/GameContextProvider";
-import LanguageContext, { LanguageContextProvider } from "./context/LanguageContext";
+import { LanguageContextProvider } from "./context/LanguageContext";
 import { ThemeContextProvider } from "./context/ThemeContextProvider";
 import FrontPage from "./pages/FrontPage";
 import GamePage from "./pages/GamePage";
 import Loading from "./pages/Loading";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import InfoGame from "./components/InfoGame";
 import GameRule from "./components/GameRule";
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
               )}
               <div className="app-footer">
                 <LanguageSwitcher />
-                <GameRule />
+                {isGameStarted ? <GameRule /> : <InfoGame />}
+                
               </div>
             </GameContextProvider>
           </ThemeContextProvider>
