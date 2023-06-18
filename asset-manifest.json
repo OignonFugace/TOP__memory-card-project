@@ -1,13 +1,28 @@
 {
   "files": {
-    "main.css": "/TOP__memory-card-project/static/css/main.e47eab92.css",
-    "main.js": "/TOP__memory-card-project/static/js/main.7aab99b8.js",
+    "main.css": "/TOP__memory-card-project/static/css/main.fd95009e.css",
+    "main.js": "/TOP__memory-card-project/static/js/main.a1197edd.js",
+    "static/media/sample.jpg": "/TOP__memory-card-project/static/media/sample.87d1eb31bcda6ac2bad3.jpg",
+    "static/media/sigmar-one-v16-latin-regular.woff2": "/TOP__memory-card-project/static/media/sigmar-one-v16-latin-regular.5c0547b6a915387718fa.woff2",
+    "static/media/amatic-sc-v24-latin-regular.woff2": "/TOP__memory-card-project/static/media/amatic-sc-v24-latin-regular.6db660b169c766765a9f.woff2",
+    "static/media/amatic-sc-v24-latin-700.woff2": "/TOP__memory-card-project/static/media/amatic-sc-v24-latin-700.5ca4d9c046525d36b8c9.woff2",
+    "static/media/potta-one-v16-latin-regular.woff2": "/TOP__memory-card-project/static/media/potta-one-v16-latin-regular.ee83e928f3623202637c.woff2",
+    "static/media/patrick-hand-v20-latin-regular.woff2": "/TOP__memory-card-project/static/media/patrick-hand-v20-latin-regular.7ac5c30904970b2412f7.woff2",
+    "static/media/satisfy-v17-latin-regular.woff2": "/TOP__memory-card-project/static/media/satisfy-v17-latin-regular.084d93d7a97ca1771a45.woff2",
+    "static/media/bangers-v21-latin-regular.woff2": "/TOP__memory-card-project/static/media/bangers-v21-latin-regular.4f699f38e065b225a94f.woff2",
+    "static/media/chewy-v18-latin-regular.woff2": "/TOP__memory-card-project/static/media/chewy-v18-latin-regular.60fd5239d03bff587c6e.woff2",
+    "static/media/fredoka-v14-latin-600.woff2": "/TOP__memory-card-project/static/media/fredoka-v14-latin-600.0accc8614d21e325165e.woff2",
+    "static/media/fredoka-v14-latin-regular.woff2": "/TOP__memory-card-project/static/media/fredoka-v14-latin-regular.a4cdd898c9612481b435.woff2",
+    "static/media/bubblegum-sans-v16-latin-regular.woff2": "/TOP__memory-card-project/static/media/bubblegum-sans-v16-latin-regular.06c25fdef1f8cc261b08.woff2",
+    "static/media/press-start-2p-v15-latin-regular.woff2": "/TOP__memory-card-project/static/media/press-start-2p-v15-latin-regular.efa4fd449b33df426d63.woff2",
+    "static/media/comfortaa-v40-latin-600.woff2": "/TOP__memory-card-project/static/media/comfortaa-v40-latin-600.16c8281f39419d66246c.woff2",
+    "static/media/comfortaa-v40-latin-regular.woff2": "/TOP__memory-card-project/static/media/comfortaa-v40-latin-regular.04d2b9164d14183439c9.woff2",
     "index.html": "/TOP__memory-card-project/index.html",
-    "main.e47eab92.css.map": "/TOP__memory-card-project/static/css/main.e47eab92.css.map",
-    "main.7aab99b8.js.map": "/TOP__memory-card-project/static/js/main.7aab99b8.js.map"
+    "main.fd95009e.css.map": "/TOP__memory-card-project/static/css/main.fd95009e.css.map",
+    "main.a1197edd.js.map": "/TOP__memory-card-project/static/js/main.a1197edd.js.map"
   },
   "entrypoints": [
-    "static/css/main.e47eab92.css",
-    "static/js/main.7aab99b8.js"
+    "static/css/main.fd95009e.css",
+    "static/js/main.a1197edd.js"
   ]
 }
