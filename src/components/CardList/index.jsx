@@ -10,15 +10,23 @@ function CardList() {
 
   return (
     <div className="card-list">
-      {displayedCards?.map((card) => (
-        <div key={card.id} >
-          <Tilt glareEnable={true}>
-            <div className="tilt-wrapper">
-              <Card card={card} isFlipped={isDeckFlipped} setIsFlipped={setIsDeckFlipped} />
-            </div>
-          </Tilt>
-        </div>
-      ))}
+      {Array(displayedCards.length)
+        .fill()
+        .map((_, index) => (
+          <div key={index}>
+            <Tilt glareEnable={true}>
+              <div className="tilt-wrapper">
+                {displayedCards[index] && (
+                  <Card
+                    card={displayedCards[index]}
+                    isFlipped={isDeckFlipped}
+                    setIsFlipped={setIsDeckFlipped}
+                  />
+                )}
+              </div>
+            </Tilt>
+          </div>
+        ))}
     </div>
   );
 }
