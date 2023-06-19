@@ -60,3 +60,22 @@
   font-size: 1.5rem;
 }
 
+/* INFO GAME PAGE */
+.info-game-page {
+  display: grid;
+}
+
+.info-game-page main {
+  disaplay: grid;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-game-page main > * + * {
+  margin-top: 2rem;
+}
+
+.info-game-rule {
+  font-weight: bold;
+  font-size: 1.1rem;
+}

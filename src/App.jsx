@@ -9,10 +9,12 @@ import Loading from "./pages/Loading";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import InfoGame from "./components/InfoGame";
 import GameRule from "./components/GameRule";
+import InfoGamePage from "./pages/InfoGamePage";
 
 function App() {
   const [isAppLoading, setIsAppLoading] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isInfoGamePageOpen, setIsInfoGamePageOpen] = useState(false);
 
   useEffect(() => {
     setIsAppLoading(true);
@@ -32,14 +34,26 @@ function App() {
               handleBackToFrontPage={() => setIsGameStarted(false)}
             >
               {!isGameStarted ? (
-                <FrontPage initiateGame={() => setIsGameStarted(true)} />
+                isInfoGamePageOpen ? (
+                  <InfoGamePage
+                    handleBackToFrontPage={() => setIsInfoGamePageOpen(false)}
+                  />
+                ) : (
+                  <FrontPage initiateGame={() => setIsGameStarted(true)} />
+                )
               ) : (
                 <GamePage />
               )}
               <div className="app-footer">
                 <LanguageSwitcher />
-                {isGameStarted ? <GameRule /> : <InfoGame />}
-                
+                {isGameStarted ? (
+                  <GameRule />
+                ) : (
+                  <InfoGame
+                    isOpen={isInfoGamePageOpen}
+                    setIsOpen={setIsInfoGamePageOpen}
+                  />
+                )}
               </div>
             </GameContextProvider>
           </ThemeContextProvider>
