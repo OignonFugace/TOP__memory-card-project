@@ -20,6 +20,7 @@ import {
   LEVEL_STATE_INPROGRESS,
 } from "../utils/constants";
 import useLocalStorage from "./useLocalStorage";
+import AppContext from "../context/AppContextProvider";
 
 function gameReducer(state, action) {
   switch (action.type) {
@@ -142,7 +143,8 @@ function gameReducer(state, action) {
   }
 }
 
-function useGame({ handleBackToFrontPage }) {
+function useGame() {
+  const { setIsGameStarted } = useContext(AppContext);
   const { themes, setThemes, currentTheme } = useContext(ThemeContext);
 
   const [localStorageBestScore, setLocalStorageBestScore] = useLocalStorage("bestScore", 0);
@@ -213,7 +215,7 @@ function useGame({ handleBackToFrontPage }) {
           });
           dispatch({
             type: OPEN_MODAL,
-            payload: { modalCallback: () => handleBackToFrontPage() },
+            payload: { modalCallback: () => setIsGameStarted(false) },
           });
         } else {
           dispatch({
@@ -260,7 +262,6 @@ function useGame({ handleBackToFrontPage }) {
     isModalOpen: state.isModalOpen,
     modalCallback: state.modalCallback,
 
-    handleBackToFrontPage,
     dispatch,
   };
 }

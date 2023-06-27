@@ -4,10 +4,12 @@ import GameContext from "../context/GameContextProvider";
 import Modal from "../components/Modal";
 import ThemeContext from "../context/ThemeContextProvider";
 import LanguageContext from "../context/LanguageContext";
+import AppContext from "../context/AppContextProvider";
 
 const LOAD_GAME_THEME = "LOAD_GAME_THEME";
 
 function GamePage() {
+  const { setIsGameStarted } = useContext(AppContext);
   const { t } = useContext(LanguageContext);
   const {
     dispatch,
@@ -16,14 +18,13 @@ function GamePage() {
     score,
     maxScore,
     bestScore,
-    handleBackToFrontPage,
   } = useContext(GameContext);
 
   const { themes, currentTheme } = useContext(ThemeContext);
 
   function handleHeaderClick() {
     dispatch({ type: LOAD_GAME_THEME, payload: { themes, currentTheme } });
-    handleBackToFrontPage();
+    setIsGameStarted(false);
   }
 
   return (

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import { en, fr } from "../data/locales";
 import useLocalStorage from "../hooks/useLocalStorage";
 

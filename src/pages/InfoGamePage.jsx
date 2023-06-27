@@ -1,14 +1,16 @@
 import { useContext } from "react";
+import AppContext from "../context/AppContextProvider";
 import LanguageContext from "../context/LanguageContext";
 
-function InfoGamePage({ handleBackToFrontPage }) {
+function InfoGamePage() {
+  const { setIsInfoGamePageOpen } = useContext(AppContext);
   const { t } = useContext(LanguageContext);
 
   return (
     <div className="info-game-page">
       <div className="top-bar">
         <div className="top-bar-left-corner">
-          <button onClick={handleBackToFrontPage}>{t("backToMenu")}</button>
+          <button onClick={() => setIsInfoGamePageOpen(false)}>{t("backToMenu")}</button>
         </div>
       </div>
       <main>
