@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import LanguageContext from "../../context/LanguageContext";
 import GameContext from "../../context/GameContextProvider";
 import "./card.css";
-import sampleImg from "../../assets/img/sample.jpg";
 import {
   SELECT_CARD,
   SET_DISPLAYED_CARDS,
@@ -11,12 +10,17 @@ import {
   STAGE_STATE_LOST,
 } from "../../utils/constants";
 import useFitText from "use-fit-text";
+import { toCamelCase } from "../../utils/string";
+import ThemeContext from "../../context/ThemeContextProvider";
 
 function Card({ card, isFlipped, setIsFlipped }) {
   const { t, language } = useContext(LanguageContext);
   const { dispatch, score, maxScore } = useContext(GameContext);
+  const { currentTheme } = useContext(ThemeContext);
   const { fontSize, ref } = useFitText();
   const [renderCount, setRenderCount] = useState(0);
+
+  console.log(toCamelCase(`/images/${currentTheme}/${card.itemName.en}.png`));
 
   function handleClick(card) {
     setIsFlipped(true);
@@ -40,8 +44,8 @@ function Card({ card, isFlipped, setIsFlipped }) {
       }
       setTimeout(() => {
         setIsFlipped(false);
-      }, 500);
-    }, 500);
+      }, 400);
+    }, 400);
   }
 
   useEffect(() => {
@@ -55,10 +59,15 @@ function Card({ card, isFlipped, setIsFlipped }) {
       key={renderCount}
     >
       <div className="card-face front-face">
-        <div
-          className="card__picture"
-          style={{ backgroundImage: `url(${sampleImg})` }}
-        ></div>
+        <div className="card__picture">
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              toCamelCase(`/images/${currentTheme}/${card.itemName.en}.png`)
+            }
+            alt={card.itemName[t("language")]}
+          />
+        </div>
 
         <div className="card__title">
           <p
@@ -70,7 +79,13 @@ function Card({ card, isFlipped, setIsFlipped }) {
         </div>
       </div>
 
-      <div className="card-face back-face"></div>
+      <div
+        className="card-face back-face"
+        style={{
+          backgroundColor: "#F1F1E9",
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/${currentTheme}/back_05.png)`,
+        }}
+      ></div>
     </div>
   );
 }
