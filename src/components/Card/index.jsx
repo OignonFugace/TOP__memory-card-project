@@ -20,8 +20,6 @@ function Card({ card, isFlipped, setIsFlipped }) {
   const { fontSize, ref } = useFitText();
   const [renderCount, setRenderCount] = useState(0);
 
-  console.log(toCamelCase(`/images/${currentTheme}/${card.itemName.en}.png`));
-
   function handleClick(card) {
     setIsFlipped(true);
 

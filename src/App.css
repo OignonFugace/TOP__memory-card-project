@@ -6,12 +6,6 @@
   height: 100vh;
 }
 
-.app-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-}
-
 /* FRONT PAGE */
 .front-page {
   display: grid;
