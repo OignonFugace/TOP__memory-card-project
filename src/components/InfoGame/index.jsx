@@ -1,21 +1,35 @@
 import { useContext } from "react";
-import AppContext from "../../context/AppContextProvider";
 import LanguageContext from "../../context/LanguageContext";
 import "./InfoGame.css";
+import { useNavigate, useMatch, useLocation } from "react-router-dom";
 
 function InfoGame() {
-  const { isInfoGamePageOpen, setIsInfoGamePageOpen } = useContext(AppContext);
   const { t } = useContext(LanguageContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const match = useMatch("/about");
+
+  function handleCloseInfoGamePage() {
+    if (location.state && location.state.from) {
+      navigate(location.state.from);
+    } else {
+      navigate("/");
+    }
+  }
 
   return (
     <div>
-      {!isInfoGamePageOpen ? (
+      {!match ? (
         <div className="info-game-trigger">
           <p>{t("infoGameMessage")}</p>
-          <button onClick={() => setIsInfoGamePageOpen(true)}>{t("infoGameButton")}</button>
+          <button
+            onClick={() => navigate("/about", { state: { from: location } })}
+          >
+            {t("infoGameButton")}
+          </button>
         </div>
       ) : (
-        <button onClick={() => setIsInfoGamePageOpen(false)}>{t("closeButton")}</button>
+        <button onClick={handleCloseInfoGamePage}>{t("closeButton")}</button>
       )}
     </div>
   );

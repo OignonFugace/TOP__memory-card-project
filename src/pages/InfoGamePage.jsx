@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import AppContext from "../context/AppContextProvider";
 import LanguageContext from "../context/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 function InfoGamePage() {
-  const { setIsInfoGamePageOpen } = useContext(AppContext);
   const { t } = useContext(LanguageContext);
+  const navigate = useNavigate();
 
   return (
     <div className="info-game-page">
       <div className="top-bar">
         <div className="top-bar-left-corner">
-          <button onClick={() => setIsInfoGamePageOpen(false)}>{t("backToMenu")}</button>
+          <button onClick={() => navigate("/")}>{t("backToMenu")}</button>
         </div>
       </div>
       <main>

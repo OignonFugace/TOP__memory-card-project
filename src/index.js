@@ -10,14 +10,6 @@ import { GameContextProvider } from "./context/GameContextProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppContextProvider>
-      <LanguageContextProvider>
-        <ThemeContextProvider>
-          <GameContextProvider>
-            <App />
-          </GameContextProvider>
-        </ThemeContextProvider>
-      </LanguageContextProvider>
-    </AppContextProvider>
+    <App />
   </React.StrictMode>
 );

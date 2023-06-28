@@ -2,15 +2,15 @@ import "./footer.css";
 import LanguageSwitcher from "../LanguageSwitcher";
 import GameRule from "../GameRule";
 import InfoGame from "../InfoGame";
-import { useContext } from "react";
-import AppContext from "../../context/AppContextProvider";
+import { useMatch } from "react-router-dom";
 
 function Footer() {
-	const { isGameStarted } = useContext(AppContext);
+	const match = useMatch("/board");
+
 	return (
 		<div className="app-footer">
 			<LanguageSwitcher />
-			{isGameStarted ? <GameRule /> : <InfoGame />}
+			{match ? <GameRule /> : <InfoGame />}
 		</div>
 	)
 }

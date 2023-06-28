@@ -5,12 +5,15 @@ import Modal from "../components/Modal";
 import ThemeContext from "../context/ThemeContextProvider";
 import LanguageContext from "../context/LanguageContext";
 import AppContext from "../context/AppContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const LOAD_GAME_THEME = "LOAD_GAME_THEME";
 
 function GamePage() {
   const { setIsGameStarted } = useContext(AppContext);
   const { t } = useContext(LanguageContext);
+  const { themes, currentTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
   const {
     dispatch,
     levels,
@@ -20,11 +23,11 @@ function GamePage() {
     bestScore,
   } = useContext(GameContext);
 
-  const { themes, currentTheme } = useContext(ThemeContext);
 
   function handleHeaderClick() {
     dispatch({ type: LOAD_GAME_THEME, payload: { themes, currentTheme } });
-    setIsGameStarted(false);
+    navigate("/");
+    // setIsGameStarted(false);
   }
 
   return (

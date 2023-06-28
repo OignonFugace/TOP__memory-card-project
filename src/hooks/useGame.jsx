@@ -21,6 +21,7 @@ import {
 } from "../utils/constants";
 import useLocalStorage from "./useLocalStorage";
 import AppContext from "../context/AppContextProvider";
+import { useNavigate } from "react-router-dom";
 
 function gameReducer(state, action) {
   switch (action.type) {
@@ -146,8 +147,8 @@ function gameReducer(state, action) {
 function useGame() {
   const { setIsGameStarted } = useContext(AppContext);
   const { themes, setThemes, currentTheme } = useContext(ThemeContext);
-
   const [localStorageBestScore, setLocalStorageBestScore] = useLocalStorage("bestScore", 0);
+  const navigate = useNavigate();
 
   const initialState = {
     currentDeck: [],
@@ -215,7 +216,7 @@ function useGame() {
           });
           dispatch({
             type: OPEN_MODAL,
-            payload: { modalCallback: () => setIsGameStarted(false) },
+            payload: { modalCallback: () => navigate("/") },
           });
         } else {
           dispatch({
