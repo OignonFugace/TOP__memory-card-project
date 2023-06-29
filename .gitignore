@@ -25,3 +25,6 @@ yarn-error.log*
 
 # static files
 /public/images
+
+# images
+/src/assets/img
