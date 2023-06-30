@@ -1,5 +1,10 @@
 import { useContext, useEffect, useReducer } from "react";
-import { trimFullDeck, shuffleDeck, getDisplayedCards } from "../utils/deck";
+import {
+  trimFullDeck,
+  shuffleDeck,
+  getDisplayedCards,
+  preloadImage,
+} from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
 import ThemeContext from "../context/ThemeContextProvider.jsx";
 import {
@@ -12,6 +17,8 @@ import {
   SELECT_CARD,
   OPEN_MODAL,
   CLOSE_MODAL,
+  FLIP_CARDS_TO_FRONT,
+  FLIP_CARDS_TO_BACK,
   GAME_STATE_RUNNING,
   GAME_STATE_FINISHED,
   STAGE_STATE_RUNNING,
@@ -20,8 +27,8 @@ import {
   LEVEL_STATE_INPROGRESS,
 } from "../utils/constants";
 import useLocalStorage from "./useLocalStorage";
-import AppContext from "../context/AppContextProvider";
 import { useNavigate } from "react-router-dom";
+import { toCamelCase } from "../utils/string";
 
 function gameReducer(state, action) {
   switch (action.type) {
@@ -123,6 +130,20 @@ function gameReducer(state, action) {
       };
     }
 
+    case FLIP_CARDS_TO_FRONT: {
+      return {
+        ...state,
+        isDeckFlipped: false,
+      };
+    }
+
+    case FLIP_CARDS_TO_BACK: {
+      return {
+        ...state,
+        isDeckFlipped: true,
+      };
+    }
+
     case OPEN_MODAL: {
       return {
         ...state,
@@ -145,9 +166,11 @@ function gameReducer(state, action) {
 }
 
 function useGame() {
-  const { setIsGameStarted } = useContext(AppContext);
   const { themes, setThemes, currentTheme } = useContext(ThemeContext);
-  const [localStorageBestScore, setLocalStorageBestScore] = useLocalStorage("bestScore", 0);
+  const [localStorageBestScore, setLocalStorageBestScore] = useLocalStorage(
+    "bestScore",
+    0
+  );
   const navigate = useNavigate();
 
   const initialState = {
@@ -164,6 +187,7 @@ function useGame() {
     bestScore: localStorageBestScore,
     isModalOpen: false,
     modalCallback: null,
+    isDeckFlipped: true,
   };
 
   const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -249,6 +273,20 @@ function useGame() {
     setLocalStorageBestScore(state.bestScore);
   }, [state.bestScore]);
 
+  useEffect(() => {
+    const imagePaths = state.displayedCards.map(
+      (card) =>
+        process.env.PUBLIC_URL +
+        toCamelCase(`/images/${currentTheme}/${card.itemName.en}.png`)
+    );
+    const loadingImages = preloadImage(imagePaths);
+    const timer = new Promise((resolve) => setTimeout(resolve, 400));
+
+    Promise.all([loadingImages, timer]).then(() =>
+      dispatch({ type: FLIP_CARDS_TO_FRONT })
+    );
+  }, [state.displayedCards]);
+
   return {
     displayedCards: state.displayedCards,
     currentDeck: state.currentDeck,
@@ -262,10 +300,10 @@ function useGame() {
     stageState: state.stageState,
     isModalOpen: state.isModalOpen,
     modalCallback: state.modalCallback,
+    isDeckFlipped: state.isDeckFlipped,
 
     dispatch,
   };
 }
 
 export default useGame;
-

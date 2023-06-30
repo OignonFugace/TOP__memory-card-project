@@ -8,20 +8,21 @@ import {
   SET_STAGE_STATE,
   STAGE_STATE_WON,
   STAGE_STATE_LOST,
+  FLIP_CARDS_TO_BACK,
 } from "../../utils/constants";
 import useFitText from "use-fit-text";
 import { toCamelCase } from "../../utils/string";
 import ThemeContext from "../../context/ThemeContextProvider";
 
-function Card({ card, isFlipped, setIsFlipped }) {
+function Card({ card }) {
   const { t, language } = useContext(LanguageContext);
-  const { dispatch, score, maxScore } = useContext(GameContext);
+  const { dispatch, score, maxScore, isDeckFlipped } = useContext(GameContext);
   const { currentTheme } = useContext(ThemeContext);
   const { fontSize, ref } = useFitText();
   const [renderCount, setRenderCount] = useState(0);
 
   function handleClick(card) {
-    setIsFlipped(true);
+    dispatch({ type: FLIP_CARDS_TO_BACK });
 
     setTimeout(() => {
       if (card.isClicked) {
@@ -40,9 +41,6 @@ function Card({ card, isFlipped, setIsFlipped }) {
           dispatch({ type: SET_DISPLAYED_CARDS });
         }
       }
-      setTimeout(() => {
-        setIsFlipped(false);
-      }, 400);
     }, 400);
   }
 
@@ -52,7 +50,7 @@ function Card({ card, isFlipped, setIsFlipped }) {
 
   return (
     <div
-      className={`card ${isFlipped ? "is-flipped" : ""}`}
+      className={`card ${isDeckFlipped ? "is-flipped" : ""}`}
       onClick={() => handleClick(card)}
       key={renderCount}
     >

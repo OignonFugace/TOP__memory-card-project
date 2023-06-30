@@ -4,6 +4,7 @@ import LevelSelector from "../components/LevelSelector";
 import ThemeSelector from "../components/ThemeSelector";
 import GameContext from "../context/GameContextProvider";
 import LanguageContext from "../context/LanguageContext";
+import { FLIP_CARDS_TO_BACK } from "../utils/constants";
 
 const SET_CURRENT_LEVEL_ID = "SET_CURRENT_LEVEL_ID";
 const LOAD_STAGE = "LOAD_STAGE";
@@ -18,6 +19,7 @@ function FrontPage() {
   const navigate = useNavigate();
 
   const startGameAtLevel = (levelId) => {
+    dispatch({ type: FLIP_CARDS_TO_BACK });
     dispatch({ type: SET_CURRENT_LEVEL_ID, payload: { currentLevelId: levelId } })
     dispatch({ type: LOAD_STAGE });
     dispatch({ type: SET_DISPLAYED_CARDS });

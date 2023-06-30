@@ -4,7 +4,8 @@ function trimFullDeck(fullDeck, level) {
 
 function ficherYatesShuffle(deck) {
   const deckCopy = [...deck];
-  let m = deckCopy.length, i;
+  let m = deckCopy.length,
+    i;
 
   while (m) {
     i = Math.floor(Math.random() * m--);
@@ -15,14 +16,19 @@ function ficherYatesShuffle(deck) {
 }
 
 function getDisplayedCards(cards, totalDisplayedCards) {
-  const notClickedCards = cards.filter(card => !card.isClicked);
+  const notClickedCards = cards.filter((card) => !card.isClicked);
 
-  if (notClickedCards.length === 0) return ficherYatesShuffle(cards).slice(0, totalDisplayedCards);
+  if (notClickedCards.length === 0)
+    return ficherYatesShuffle(cards).slice(0, totalDisplayedCards);
 
-  const randomNotClickedCardIndex = Math.floor(Math.random() * notClickedCards.length);
+  const randomNotClickedCardIndex = Math.floor(
+    Math.random() * notClickedCards.length
+  );
   const randomNotClickedCard = notClickedCards[randomNotClickedCardIndex];
-  
-  const otherCards = cards.filter(card => card.id !== randomNotClickedCard.id);
+
+  const otherCards = cards.filter(
+    (card) => card.id !== randomNotClickedCard.id
+  );
   const shuffledOtherCards = ficherYatesShuffle(otherCards);
 
   const displayCards = shuffledOtherCards.slice(0, totalDisplayedCards - 1);
@@ -32,4 +38,23 @@ function getDisplayedCards(cards, totalDisplayedCards) {
   return displayCards;
 }
 
-export { trimFullDeck, ficherYatesShuffle as shuffleDeck, getDisplayedCards };
+function preloadImage(imagePaths) {
+  return Promise.all(
+    imagePaths.map(
+      (path) =>
+        new Promise((resolve, reject) => {
+          const img = new window.Image();
+          img.src = path;
+          img.onload = resolve;
+          img.onerror = reject;
+        })
+    )
+  );
+}
+
+export {
+  trimFullDeck,
+  ficherYatesShuffle as shuffleDeck,
+  getDisplayedCards,
+  preloadImage,
+};
