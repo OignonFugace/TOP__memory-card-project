@@ -38,7 +38,7 @@ function getDisplayedCards(cards, totalDisplayedCards) {
   return displayCards;
 }
 
-function preloadImage(imagePaths) {
+function preloadImages(imagePaths) {
   return Promise.all(
     imagePaths.map(
       (path) =>
@@ -56,5 +56,5 @@ export {
   trimFullDeck,
   ficherYatesShuffle as shuffleDeck,
   getDisplayedCards,
-  preloadImage,
+  preloadImages,
 };

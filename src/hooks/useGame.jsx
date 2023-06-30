@@ -3,7 +3,7 @@ import {
   trimFullDeck,
   shuffleDeck,
   getDisplayedCards,
-  preloadImage,
+  preloadImages,
 } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
 import ThemeContext from "../context/ThemeContextProvider.jsx";
@@ -279,7 +279,7 @@ function useGame() {
         process.env.PUBLIC_URL +
         toCamelCase(`/images/${currentTheme}/${card.itemName.en}.png`)
     );
-    const loadingImages = preloadImage(imagePaths);
+    const loadingImages = preloadImages(imagePaths);
     const timer = new Promise((resolve) => setTimeout(resolve, 400));
 
     Promise.all([loadingImages, timer]).then(() =>
