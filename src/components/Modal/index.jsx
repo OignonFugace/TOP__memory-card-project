@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import GameContext from "../../context/GameContextProvider";
+import { GameContext, LanguageContext } from "../../contexts";
 import "./modal.css";
 import {
   CLOSE_MODAL,
@@ -7,7 +7,6 @@ import {
   STAGE_STATE_LOST,
   STAGE_STATE_WON,
 } from "../../utils/constants";
-import LanguageContext from "../../context/LanguageContext";
 
 function Modal() {
   const { t } = useContext(LanguageContext);

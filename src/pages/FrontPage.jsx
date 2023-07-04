@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import LevelSelector from "../components/LevelSelector";
-import ThemeSelector from "../components/ThemeSelector";
-import GameContext from "../context/GameContextProvider";
-import LanguageContext from "../context/LanguageContext";
 import { FLIP_CARDS_TO_BACK } from "../utils/constants";
+import { GameContext, LanguageContext } from "../contexts";
+import { ThemeSelector, LevelSelector } from "../components";
 
 const SET_CURRENT_LEVEL_ID = "SET_CURRENT_LEVEL_ID";
 const LOAD_STAGE = "LOAD_STAGE";

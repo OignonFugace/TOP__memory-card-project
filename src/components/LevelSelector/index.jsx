@@ -1,8 +1,7 @@
 import { useContext } from "react";
-import GameContext from "../../context/GameContextProvider";
+import { GameContext, LanguageContext } from "../../contexts";
 import "./levelSelector.css";
 import { LEVEL_STATE_CLOSED } from "../../utils/constants";
-import LanguageContext from "../../context/LanguageContext";
 
 function LevelSelector({ startGameAtLevel }) {
   const { t } = useContext(LanguageContext);

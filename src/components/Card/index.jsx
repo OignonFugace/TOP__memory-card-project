@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import LanguageContext from "../../context/LanguageContext";
-import GameContext from "../../context/GameContextProvider";
+import { ThemeContext, LanguageContext, GameContext } from "../../contexts";
 import "./card.css";
 import {
   SELECT_CARD,
@@ -12,7 +11,6 @@ import {
 } from "../../utils/constants";
 import useFitText from "use-fit-text";
 import { toCamelCase } from "../../utils/string";
-import ThemeContext from "../../context/ThemeContextProvider";
 
 function Card({ card }) {
   const { t, language } = useContext(LanguageContext);

@@ -6,7 +6,7 @@ import {
   preloadImages,
 } from "../utils/deck";
 import { levels as levelsData } from "../data/levels";
-import ThemeContext from "../context/ThemeContextProvider.jsx";
+import { ThemeContext } from "../contexts";
 import {
   LOAD_GAME_THEME,
   SET_CURRENT_LEVEL_ID,

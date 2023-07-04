@@ -1,0 +1,10 @@
+export { default as LevelSelector } from "./LevelSelector/index";
+export { default as ThemeSelector } from "./ThemeSelector/index";
+export { default as Card } from "./Card/index";
+export { default as CardList } from "./CardList/index";
+export { default as Footer } from "./Footer/index";
+export { default as GameRule } from "./GameRule/index";
+export { default as Image } from "./Image/index";
+export { default as InfoGame } from "./InfoGame/index";
+export { default as LanguageSwitcher } from "./LanguageSwitcher/index";
+export { default as Modal } from "./Modal/index";

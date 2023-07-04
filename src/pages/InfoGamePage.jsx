@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import LanguageContext from "../context/LanguageContext";
+import { LanguageContext } from "../contexts"
 import { useNavigate } from "react-router-dom";
 
 function InfoGamePage() {

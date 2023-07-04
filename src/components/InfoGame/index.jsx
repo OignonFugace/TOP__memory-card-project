@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import LanguageContext from "../../context/LanguageContext";
+import { LanguageContext } from "../../contexts";
 import "./InfoGame.css";
 import { useNavigate, useMatch, useLocation } from "react-router-dom";
 

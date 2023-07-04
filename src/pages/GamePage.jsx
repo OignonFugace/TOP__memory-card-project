@@ -1,16 +1,11 @@
 import { useContext } from "react";
-import CardList from "../components/CardList";
-import GameContext from "../context/GameContextProvider";
-import Modal from "../components/Modal";
-import ThemeContext from "../context/ThemeContextProvider";
-import LanguageContext from "../context/LanguageContext";
-import AppContext from "../context/AppContextProvider";
 import { useNavigate } from "react-router-dom";
+import { GameContext, ThemeContext, LanguageContext } from "../contexts";
+import { CardList, Modal } from "../components";
 
 const LOAD_GAME_THEME = "LOAD_GAME_THEME";
 
 function GamePage() {
-  const { setIsGameStarted } = useContext(AppContext);
   const { t } = useContext(LanguageContext);
   const { themes, currentTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
@@ -27,7 +22,6 @@ function GamePage() {
   function handleHeaderClick() {
     dispatch({ type: LOAD_GAME_THEME, payload: { themes, currentTheme } });
     navigate("/");
-    // setIsGameStarted(false);
   }
 
   return (

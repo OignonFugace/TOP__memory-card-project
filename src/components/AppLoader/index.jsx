@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
-import AppContext from "../../context/AppContextProvider";
-import Loading from "../../pages/Loading";
+import { AppContext } from "../../contexts";
+import { LoadingPage } from "../../pages";
 import { preloadImages } from "../../utils/deck";
 
 function AppLoader({ children }) {
@@ -16,7 +16,7 @@ function AppLoader({ children }) {
     Promise.all([loadingImages]).then(() => setIsAppLoading(false));
   }, []);
 
-  return isAppLoading ? <Loading /> : children;
+  return isAppLoading ? <LoadingPage /> : children;
 }
 
 export default AppLoader;

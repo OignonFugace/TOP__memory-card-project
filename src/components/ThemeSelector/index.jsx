@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import LanguageContext from "../../context/LanguageContext";
-import ThemeContext from "../../context/ThemeContextProvider";
+import { LanguageContext, ThemeContext } from "../../contexts";
 import "./ThemeSelector.css";
 import { themesData } from "../../data/themeData";
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import LanguageContext from "../../context/LanguageContext";
+import { LanguageContext } from "../../contexts";
 
 function GameRule() {
 	const { t } = useContext(LanguageContext);

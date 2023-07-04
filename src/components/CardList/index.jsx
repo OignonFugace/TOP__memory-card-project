@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import GameContext from "../../context/GameContextProvider";
+import { GameContext } from "../../contexts";
 import Card from "../Card";
 import "./cardList.css";
 import Tilt from "react-parallax-tilt";
